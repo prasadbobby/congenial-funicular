@@ -31,7 +31,18 @@ from werkzeug.utils import secure_filename
 import matplotlib.pyplot as plt
 import seaborn as sns
 import hashlib
-
+import fitz  # PyMuPDF for better PDF handling
+from docx import Document
+import csv
+import xlrd
+import openpyxl
+from pathlib import Path
+import plotly.graph_objects as go
+import plotly.express as px
+import plotly.utils
+from io import BytesIO
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
 
 try:
     import google.generativeai as genai
@@ -59,20 +70,21 @@ app = Flask(__name__, static_folder='static')
 CORS(app)
 app.secret_key = os.getenv('SECRET_KEY', 'appointment_booking_secret_key')
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB max file size
 
 # Configure upload settings
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx', 'doc'}
+REPORTS_FOLDER = 'reports'
+CHARTS_FOLDER = 'static/charts'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'docx', 'doc', 'xlsx', 'xls', 'csv'}
 
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
+for folder in [UPLOAD_FOLDER, REPORTS_FOLDER, CHARTS_FOLDER]:
+    if not os.path.exists(folder):
+        os.makedirs(folder)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-
-
+app.config['REPORTS_FOLDER'] = REPORTS_FOLDER
+app.config['CHARTS_FOLDER'] = CHARTS_FOLDER
 
 # Environment variables
 AZURE_OPENAI_API_KEY = os.getenv('AZURE_OPENAI_API_KEY')
@@ -120,6 +132,48 @@ if GOOGLE_AI_API_KEY and GOOGLE_AI_AVAILABLE:
 
 # Store appointments
 appointments = []
+
+# Normal health value ranges
+NORMAL_RANGES = {
+    'blood_pressure_systolic': {'min': 90, 'max': 120, 'unit': 'mmHg', 'name': 'Systolic Blood Pressure'},
+    'blood_pressure_diastolic': {'min': 60, 'max': 80, 'unit': 'mmHg', 'name': 'Diastolic Blood Pressure'},
+    'heart_rate': {'min': 60, 'max': 100, 'unit': 'bpm', 'name': 'Heart Rate'},
+    'temperature': {'min': 97.0, 'max': 99.5, 'unit': '°F', 'name': 'Body Temperature'},
+    'glucose_fasting': {'min': 70, 'max': 100, 'unit': 'mg/dL', 'name': 'Fasting Glucose'},
+    'glucose_random': {'min': 70, 'max': 140, 'unit': 'mg/dL', 'name': 'Random Glucose'},
+    'cholesterol_total': {'min': 125, 'max': 200, 'unit': 'mg/dL', 'name': 'Total Cholesterol'},
+    'cholesterol_ldl': {'min': 0, 'max': 100, 'unit': 'mg/dL', 'name': 'LDL Cholesterol'},
+    'cholesterol_hdl_male': {'min': 40, 'max': 999, 'unit': 'mg/dL', 'name': 'HDL Cholesterol (Male)'},
+    'cholesterol_hdl_female': {'min': 50, 'max': 999, 'unit': 'mg/dL', 'name': 'HDL Cholesterol (Female)'},
+    'triglycerides': {'min': 0, 'max': 150, 'unit': 'mg/dL', 'name': 'Triglycerides'},
+    'hemoglobin_male': {'min': 13.8, 'max': 17.2, 'unit': 'g/dL', 'name': 'Hemoglobin (Male)'},
+    'hemoglobin_female': {'min': 12.1, 'max': 15.1, 'unit': 'g/dL', 'name': 'Hemoglobin (Female)'},
+    'hematocrit_male': {'min': 40.7, 'max': 50.3, 'unit': '%', 'name': 'Hematocrit (Male)'},
+    'hematocrit_female': {'min': 36.1, 'max': 44.3, 'unit': '%', 'name': 'Hematocrit (Female)'},
+    'white_blood_cells': {'min': 3.5, 'max': 10.5, 'unit': '×10³/μL', 'name': 'White Blood Cells'},
+    'platelets': {'min': 150, 'max': 450, 'unit': '×10³/μL', 'name': 'Platelets'},
+    'creatinine_male': {'min': 0.74, 'max': 1.35, 'unit': 'mg/dL', 'name': 'Creatinine (Male)'},
+    'creatinine_female': {'min': 0.59, 'max': 1.04, 'unit': 'mg/dL', 'name': 'Creatinine (Female)'},
+    'bun': {'min': 6, 'max': 24, 'unit': 'mg/dL', 'name': 'Blood Urea Nitrogen'},
+    'sodium': {'min': 136, 'max': 145, 'unit': 'mEq/L', 'name': 'Sodium'},
+    'potassium': {'min': 3.5, 'max': 5.2, 'unit': 'mEq/L', 'name': 'Potassium'},
+    'calcium': {'min': 8.5, 'max': 10.2, 'unit': 'mg/dL', 'name': 'Calcium'},
+    'albumin': {'min': 3.5, 'max': 5.0, 'unit': 'g/dL', 'name': 'Albumin'},
+    'bilirubin_total': {'min': 0.1, 'max': 1.2, 'unit': 'mg/dL', 'name': 'Total Bilirubin'},
+    'alt': {'min': 7, 'max': 56, 'unit': 'U/L', 'name': 'ALT (Alanine Transaminase)'},
+    'ast': {'min': 10, 'max': 40, 'unit': 'U/L', 'name': 'AST (Aspartate Transaminase)'},
+    'alkaline_phosphatase': {'min': 44, 'max': 147, 'unit': 'U/L', 'name': 'Alkaline Phosphatase'},
+    'vitamin_d': {'min': 30, 'max': 100, 'unit': 'ng/mL', 'name': 'Vitamin D'},
+    'vitamin_b12': {'min': 200, 'max': 900, 'unit': 'pg/mL', 'name': 'Vitamin B12'},
+    'iron': {'min': 60, 'max': 170, 'unit': 'μg/dL', 'name': 'Iron'},
+    'ferritin_male': {'min': 12, 'max': 300, 'unit': 'ng/mL', 'name': 'Ferritin (Male)'},
+    'ferritin_female': {'min': 12, 'max': 150, 'unit': 'ng/mL', 'name': 'Ferritin (Female)'},
+    'tsh': {'min': 0.27, 'max': 4.2, 'unit': 'μIU/mL', 'name': 'TSH (Thyroid Stimulating Hormone)'},
+    'hba1c': {'min': 4.0, 'max': 5.6, 'unit': '%', 'name': 'HbA1c (Hemoglobin A1c)'},
+}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def generate_teams_meeting_id():
     # Microsoft Teams uses a longer format with numbers and letters
@@ -232,6 +286,236 @@ def send_appointment_email(appointment, doctor_name, patient_email, meet_link):
         logger.error(f"Error sending email: {str(e)}")
         return False
 
+# Document parsing utilities
+def extract_text_from_pdf(file_path):
+    """Extract text from PDF file using PyMuPDF"""
+    try:
+        text = ""
+        doc = fitz.open(file_path)
+        for page_num in range(len(doc)):
+            page = doc.load_page(page_num)
+            text += page.get_text()
+        doc.close()
+        return text
+    except Exception as e:
+        logger.error(f"Error extracting text from PDF: {str(e)}")
+        return ""
+
+def extract_text_from_docx(file_path):
+    """Extract text from DOCX file"""
+    try:
+        doc = Document(file_path)
+        text = ""
+        for paragraph in doc.paragraphs:
+            text += paragraph.text + "\n"
+        
+        # Extract text from tables
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    text += cell.text + "\t"
+                text += "\n"
+        
+        return text
+    except Exception as e:
+        logger.error(f"Error extracting text from DOCX: {str(e)}")
+        return ""
+
+def extract_text_from_txt(file_path):
+    """Extract text from text file"""
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return file.read()
+    except Exception as e:
+        logger.error(f"Error extracting text from TXT: {str(e)}")
+        return ""
+
+def extract_data_from_excel(file_path):
+    """Extract data from Excel file"""
+    try:
+        # Try reading with openpyxl first
+        df = pd.read_excel(file_path, engine='openpyxl')
+        return df.to_string()
+    except Exception as e:
+        try:
+            # Fallback to xlrd for older Excel files
+            df = pd.read_excel(file_path, engine='xlrd')
+            return df.to_string()
+        except Exception as e2:
+            logger.error(f"Error extracting data from Excel: {str(e2)}")
+            return ""
+
+def extract_data_from_csv(file_path):
+    """Extract data from CSV file"""
+    try:
+        df = pd.read_csv(file_path)
+        return df.to_string()
+    except Exception as e:
+        logger.error(f"Error extracting data from CSV: {str(e)}")
+        return ""
+
+def extract_health_values(text):
+    """Extract health values and measurements from text"""
+    health_values = {}
+    
+    # Common patterns for health values
+    patterns = {
+        'blood_pressure': r'(?:blood\s*pressure|bp)[\s:]*(\d{2,3})/(\d{2,3})',
+        'heart_rate': r'(?:heart\s*rate|pulse|hr)[\s:]*(\d{2,3})',
+        'temperature': r'(?:temperature|temp)[\s:]*(\d{2,3}\.?\d*)',
+        'glucose': r'(?:glucose|sugar|blood\s*sugar)[\s:]*(\d{2,3})',
+        'cholesterol': r'(?:cholesterol|chol)[\s:]*(\d{2,3})',
+        'hemoglobin': r'(?:hemoglobin|hb|hgb)[\s:]*(\d{1,2}\.?\d*)',
+        'hematocrit': r'(?:hematocrit|hct)[\s:]*(\d{1,2}\.?\d*)',
+        'creatinine': r'(?:creatinine|creat)[\s:]*(\d{1}\.?\d*)',
+        'bun': r'(?:bun|urea)[\s:]*(\d{1,2})',
+        'sodium': r'(?:sodium|na)[\s:]*(\d{2,3})',
+        'potassium': r'(?:potassium|k)[\s:]*(\d{1}\.?\d*)',
+        'hba1c': r'(?:hba1c|a1c|hemoglobin\s*a1c)[\s:]*(\d{1}\.?\d*)',
+        'tsh': r'(?:tsh|thyroid)[\s:]*(\d{1}\.?\d*)',
+    }
+    
+    text_lower = text.lower()
+    
+    for key, pattern in patterns.items():
+        matches = re.finditer(pattern, text_lower, re.IGNORECASE)
+        for match in matches:
+            if key == 'blood_pressure':
+                systolic = int(match.group(1))
+                diastolic = int(match.group(2))
+                health_values['blood_pressure_systolic'] = systolic
+                health_values['blood_pressure_diastolic'] = diastolic
+            else:
+                try:
+                    value = float(match.group(1))
+                    health_values[key] = value
+                except ValueError:
+                    continue
+    
+    return health_values
+
+def generate_health_chart(health_values, gender='unknown'):
+    """Generate visual charts for health values"""
+    if not health_values:
+        return None
+    
+    # Create a figure with subplots
+    fig = go.Figure()
+    
+    abnormal_values = []
+    chart_data = []
+    
+    for key, value in health_values.items():
+        # Find appropriate normal range
+        range_key = key
+        if key in ['cholesterol_hdl', 'hemoglobin', 'hematocrit', 'creatinine', 'ferritin']:
+            if gender.lower() == 'male':
+                range_key = f"{key}_male"
+            elif gender.lower() == 'female':
+                range_key = f"{key}_female"
+        
+        if range_key in NORMAL_RANGES:
+            normal_range = NORMAL_RANGES[range_key]
+            min_val = normal_range['min']
+            max_val = normal_range['max']
+            name = normal_range['name']
+            unit = normal_range['unit']
+            
+            # Determine status
+            if value < min_val:
+                status = 'Low'
+                color = '#ff4444'
+            elif value > max_val:
+                status = 'High'
+                color = '#ff4444'
+            else:
+                status = 'Normal'
+                color = '#44ff44'
+            
+            if status != 'Normal':
+                abnormal_values.append({
+                    'name': name,
+                    'value': value,
+                    'unit': unit,
+                    'status': status,
+                    'normal_range': f"{min_val}-{max_val} {unit}"
+                })
+            
+            chart_data.append({
+                'name': name,
+                'value': value,
+                'min': min_val,
+                'max': max_val,
+                'status': status,
+                'color': color,
+                'unit': unit
+            })
+    
+    if not chart_data:
+        return None
+    
+    # Create bar chart
+    names = [item['name'] for item in chart_data]
+    values = [item['value'] for item in chart_data]
+    colors = [item['color'] for item in chart_data]
+    
+    fig.add_trace(go.Bar(
+        x=names,
+        y=values,
+        marker_color=colors,
+        text=[f"{item['value']} {item['unit']}" for item in chart_data],
+        textposition='outside',
+        name='Your Values'
+    ))
+    
+    # Add normal range indicators
+    for i, item in enumerate(chart_data):
+        fig.add_shape(
+            type="line",
+            x0=i-0.4,
+            y0=item['min'],
+            x1=i+0.4,
+            y1=item['min'],
+            line=dict(color="blue", width=2, dash="dash"),
+        )
+        fig.add_shape(
+            type="line",
+            x0=i-0.4,
+            y0=item['max'],
+            x1=i+0.4,
+            y1=item['max'],
+            line=dict(color="blue", width=2, dash="dash"),
+        )
+    
+    fig.update_layout(
+        title="Health Values Analysis",
+        xaxis_title="Health Parameters",
+        yaxis_title="Values",
+        xaxis_tickangle=-45,
+        height=600,
+        showlegend=False,
+        annotations=[
+            dict(
+                text="Blue dashed lines indicate normal range",
+                xref="paper", yref="paper",
+                x=0.5, y=1.02, xanchor='center', yanchor='bottom',
+                showarrow=False,
+                font=dict(size=12, color="blue")
+            )
+        ]
+    )
+    
+    # Save chart
+    chart_filename = f"health_chart_{uuid.uuid4().hex[:8]}.html"
+    chart_path = os.path.join(app.config['CHARTS_FOLDER'], chart_filename)
+    fig.write_html(chart_path)
+    
+    return {
+        'chart_path': f"/static/charts/{chart_filename}",
+        'abnormal_values': abnormal_values,
+        'total_values': len(chart_data)
+    }
+
 # Define the agent system architecture
 class MediAssistAgentSystem:
     def __init__(self):
@@ -271,7 +555,8 @@ class MediAssistAgentSystem:
             "diet": DietAgent(self),
             "image": ImageAgent(self),
             "search": SearchAgent(self),
-            "reflection": ReflectionAgent(self)
+            "reflection": ReflectionAgent(self),
+            "report": ReportAnalysisAgent(self)  # New agent for report analysis
         }
         logger.info(f"Registered {len(self.agents)} agents")
         
@@ -358,6 +643,42 @@ class MediAssistAgentSystem:
             return {
                 "status": "error",
                 "response": f"An error occurred while analyzing your image: {str(e)}"
+            }
+    
+    def process_report_analysis(self, reports_data: List[Dict], patient_info: Dict = None) -> Dict:
+        """Process medical report analysis task"""
+        try:
+            logger.info(f"Processing report analysis for {len(reports_data)} reports")
+            
+            # Check initialization
+            if not self.is_initialized:
+                return {
+                    "status": "error",
+                    "response": "Agent system is not initialized yet. Please try again in a moment."
+                }
+            
+            # Create a task object
+            task = {
+                "reports_data": reports_data,
+                "patient_info": patient_info or {},
+                "status": "pending",
+                "start_time": time.time()
+            }
+            
+            # Route to report analysis agent
+            response = self.agents["report"].process(task)
+            
+            # Calculate processing time
+            processing_time = time.time() - task["start_time"]
+            response["processing_time"] = f"{processing_time:.2f}s"
+            
+            return response
+            
+        except Exception as e:
+            logger.error(f"Error processing report analysis: {str(e)}")
+            return {
+                "status": "error",
+                "response": f"An error occurred while analyzing your reports: {str(e)}"
             }
     
     def process_diet_plan(self, user_data: Dict) -> Dict:
@@ -648,7 +969,25 @@ Provide comprehensive nutritional guidance with CLEAN markdown formatting. Each 
 
 ## 🏋️ Lifestyle Considerations
 
-For each section, provide detailed and practical advice. Format your response with bullet points using * (not -), use numbered lists (1. 2.) where appropriate, and use **bold text** for important information or terms."""
+For each section, provide detailed and practical advice. Format your response with bullet points using * (not -), use numbered lists (1. 2.) where appropriate, and use **bold text** for important information or terms.""",
+
+                'report': f"""As a medical report analysis expert, provide comprehensive analysis for this report data:
+
+Query: {query}
+
+Provide detailed medical report analysis with CLEAN markdown formatting. Each section should start with the exact headings below with emojis:
+
+## 📋 Report Summary
+
+## 🔍 Key Findings
+
+## ⚠️ Abnormal Values
+
+## 💊 Clinical Significance
+
+## 📊 Recommendations
+
+For each section, provide detailed analysis. Format your response with bullet points using * (not -), use numbered lists (1. 2.) where appropriate, and use **bold text** for important information or terms."""
             }
             
             # Select the appropriate prompt template
@@ -666,6 +1005,102 @@ For each section, provide detailed and practical advice. Format your response wi
         except Exception as e:
             logger.error(f"Error generating direct response: {str(e)}")
             return f"I apologize, but I encountered an error while processing your query. Please try rephrasing your question or providing more details."
+
+
+# Report Analysis Agent - New agent for analyzing medical reports
+class ReportAnalysisAgent(Agent):
+    def __init__(self, system):
+        super().__init__(system)
+        self.name = "report"
+        
+    def process(self, task: Dict) -> Dict:
+        """Process medical report analysis tasks"""
+        try:
+            reports_data = task["reports_data"]
+            patient_info = task.get("patient_info", {})
+            
+            # Combine all report texts
+            combined_text = ""
+            report_summaries = []
+            
+            for report in reports_data:
+                combined_text += f"\n--- {report['filename']} ---\n{report['content']}\n"
+                report_summaries.append(f"- {report['filename']} ({report['size']} bytes)")
+            
+            # Extract health values from all reports
+            health_values = extract_health_values(combined_text)
+            
+            # Generate health charts if values found
+            chart_data = None
+            if health_values:
+                gender = patient_info.get('gender', 'unknown')
+                chart_data = generate_health_chart(health_values, gender)
+            
+            # Create comprehensive analysis prompt
+            analysis_prompt = f"""As a medical report analysis expert, provide a comprehensive analysis of these medical reports.
+
+Patient Information:
+{json.dumps(patient_info, indent=2) if patient_info else "Not provided"}
+
+Reports Analyzed:
+{chr(10).join(report_summaries)}
+
+Combined Report Content:
+{combined_text[:8000]}  # Limit to prevent token overflow
+
+Extracted Health Values:
+{json.dumps(health_values, indent=2) if health_values else "None automatically extracted"}
+
+Provide a detailed medical report analysis with CLEAN markdown formatting. Each section should start with the exact headings below with emojis:
+
+## 📋 Executive Summary
+
+## 🔍 Key Findings Analysis
+
+## ⚠️ Abnormal Values & Concerns
+
+## 📈 Trend Analysis (if multiple reports)
+
+## 💊 Clinical Significance
+
+## 🩺 Recommended Actions
+
+## 📊 Follow-up Recommendations
+
+## ⚕️ Specialist Consultations
+
+For each section, provide detailed analysis. Format your response with bullet points using * (not -), use numbered lists (1. 2.) where appropriate, and use **bold text** for important information or terms. 
+
+If specific health values are found, compare them with normal ranges and explain their clinical significance. If trends can be identified across multiple reports, highlight them.
+
+Focus on:
+1. Critical findings that need immediate attention
+2. Values outside normal ranges
+3. Patterns or trends
+4. Recommendations for patient care
+5. Suggested follow-up tests or consultations"""
+            
+            # Generate response using Azure OpenAI
+            response = self.system.model_manager.generate_response(
+                prompt=analysis_prompt,
+                max_tokens=4096,
+                temperature=0.3
+            )
+            
+            # Create response object
+            response_obj = self._create_base_response()
+            response_obj["response"] = response
+            response_obj["health_values"] = health_values
+            response_obj["chart_data"] = chart_data
+            response_obj["reports_processed"] = len(reports_data)
+            
+            return response_obj
+            
+        except Exception as e:
+            logger.error(f"Error in report analysis agent: {str(e)}")
+            response = self._create_base_response("error")
+            response["response"] = f"Error analyzing your medical reports: {str(e)}"
+            return response
 
 
 # Router Agent - Routes queries to the appropriate specialized agent
@@ -707,8 +1142,9 @@ Available agents:
 3. "symptom" - For symptom analysis, diagnoses, medical conditions
 4. "drug" - For medication information, drug interactions, pharmaceutical queries
 5. "diet" - For nutrition, diet plans, food-related health queries
+6. "report" - For medical report analysis, lab results, health data interpretation
 
-Respond with ONLY ONE word - the name of the most appropriate agent (clinical, literature, symptom, drug, or diet). Choose the single best match.
+Respond with ONLY ONE word - the name of the most appropriate agent (clinical, literature, symptom, drug, diet, report). Choose the single best match.
 """
             
             # Get response from Azure OpenAI
@@ -720,7 +1156,7 @@ Respond with ONLY ONE word - the name of the most appropriate agent (clinical, l
             agent_name = response.strip().lower()
             
             # Validate the agent name
-            valid_agents = ["clinical", "literature", "symptom", "drug", "diet"]
+            valid_agents = ["clinical", "literature", "symptom", "drug", "diet", "report"]
             if agent_name not in valid_agents:
                 logger.warning(f"Router returned invalid agent: {agent_name}, defaulting to clinical")
                 agent_name = "clinical"
@@ -763,7 +1199,7 @@ class ClinicalAgent(Agent):
             if not similar_cases or len(similar_cases) == 0:
                 logger.info(f"No similar clinical cases found for query: '{query[:50]}...', generating direct response")
                 
-                # Generate a direct response using Gemini
+                # Generate a direct response using Azure OpenAI
                 direct_response = self._generate_direct_response(query, "clinical")
                 
                 response = self._create_base_response()
@@ -843,7 +1279,7 @@ class LiteratureAgent(Agent):
             if not similar_literature or len(similar_literature) == 0:
                 logger.info(f"No similar literature found for query: '{query[:50]}...', generating direct response")
                 
-                # Generate a direct response using Gemini
+                # Generate a direct response using Azure OpenAI
                 direct_response = self._generate_direct_response(query, "literature")
                 
                 response = self._create_base_response()
@@ -923,7 +1359,7 @@ class SymptomAgent(Agent):
             if not similar_symptoms or len(similar_symptoms) == 0:
                 logger.info(f"No similar symptom information found for query: '{query[:50]}...', generating direct response")
                 
-                # Generate a direct response using Gemini
+                # Generate a direct response using Azure OpenAI
                 direct_response = self._generate_direct_response(query, "symptom")
                 
                 # Get specialist recommendations based on the symptoms
@@ -1021,7 +1457,7 @@ class DrugAgent(Agent):
             if not similar_drugs or len(similar_drugs) == 0:
                 logger.info(f"No similar medication information found for query: '{query[:50]}...', generating direct response")
                 
-                # Generate a direct response using Gemini
+                # Generate a direct response using Azure OpenAI
                 direct_response = self._generate_direct_response(query, "drug")
                 
                 response = self._create_base_response()
@@ -1106,7 +1542,7 @@ class DietAgent(Agent):
             if not similar_diets or len(similar_diets) == 0:
                 logger.info(f"No similar nutrition information found for query: '{query[:50]}...', generating direct response")
                 
-                # Generate a direct response using Gemini
+                # Generate a direct response using Azure OpenAI
                 direct_response = self._generate_direct_response(query, "diet")
                 
                 response = self._create_base_response()
@@ -1943,6 +2379,111 @@ def analyze_image():
             "response": f"An error occurred: {str(e)}"
         })
 
+@app.route('/analyze-reports', methods=['POST'])
+def analyze_reports():
+    """Analyze multiple medical reports"""
+    try:
+        # Validate input
+        if 'reports' not in request.files:
+            return jsonify({
+                "status": "error",
+                "response": "No reports uploaded"
+            })
+        
+        uploaded_files = request.files.getlist('reports')
+        patient_info = {}
+        
+        # Get patient information if provided
+        if 'patient_info' in request.form:
+            try:
+                patient_info = json.loads(request.form['patient_info'])
+            except:
+                pass
+        
+        if not uploaded_files or all(f.filename == '' for f in uploaded_files):
+            return jsonify({
+                "status": "error",
+                "response": "No files selected"
+            })
+        
+        # Ensure system is initialized
+        if not agent_system.is_initialized:
+            background_thread = threading.Thread(target=agent_system.initialize)
+            background_thread.start()
+            
+            return jsonify({
+                "status": "error",
+                "response": "System is initializing. Please try again in a moment."
+            })
+        
+        # Process uploaded files
+        reports_data = []
+        for file in uploaded_files:
+            if file.filename != '' and allowed_file(file.filename):
+                try:
+                    # Save the file temporarily
+                    filename = secure_filename(file.filename)
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    unique_filename = f"{timestamp}_{filename}"
+                    file_path = os.path.join(app.config['REPORTS_FOLDER'], unique_filename)
+                    file.save(file_path)
+                    
+                    # Extract content based on file type
+                    file_extension = filename.rsplit('.', 1)[1].lower()
+                    content = ""
+                    
+                    if file_extension == 'pdf':
+                        content = extract_text_from_pdf(file_path)
+                    elif file_extension in ['docx', 'doc']:
+                        content = extract_text_from_docx(file_path)
+                    elif file_extension == 'txt':
+                        content = extract_text_from_txt(file_path)
+                    elif file_extension in ['xlsx', 'xls']:
+                        content = extract_data_from_excel(file_path)
+                    elif file_extension == 'csv':
+                        content = extract_data_from_csv(file_path)
+                    
+                    if content:
+                        reports_data.append({
+                            'filename': filename,
+                            'content': content,
+                            'size': len(content),
+                            'type': file_extension
+                        })
+                    
+                    # Clean up temporary file
+                    try:
+                        os.remove(file_path)
+                    except:
+                        pass
+                        
+                except Exception as e:
+                    logger.error(f"Error processing file {file.filename}: {str(e)}")
+                    continue
+        
+        if not reports_data:
+            return jsonify({
+                "status": "error",
+                "response": "No valid reports could be processed. Please check file formats."
+            })
+        
+        # Process the reports through the agent system
+        response = agent_system.process_report_analysis(reports_data, patient_info)
+        
+        # Format the response if successful
+        if response["status"] == "success":
+            html_response = format_markdown_response(response["response"])
+            response["response"] = html_response
+        
+        return jsonify(response)
+        
+    except Exception as e:
+        logger.error(f"Error in report analysis endpoint: {str(e)}")
+        return jsonify({
+            "status": "error",
+            "response": f"An error occurred: {str(e)}"
+        })
+
 @app.route('/diet-plan', methods=['POST'])
 def create_diet_plan():
     """Generate a personalized diet plan"""
@@ -2026,6 +2567,11 @@ def refresh_embeddings():
 @app.route('/templates/<path:path>')
 def send_template(path):
     return send_from_directory('templates', path)
+
+@app.route('/static/charts/<path:filename>')
+def serve_chart(filename):
+    """Serve generated chart files"""
+    return send_from_directory(app.config['CHARTS_FOLDER'], filename)
 
 @app.route('/get-doctors', methods=['POST'])
 def get_doctors():
@@ -2216,6 +2762,9 @@ def create_folders():
     os.makedirs('data/embeddings', exist_ok=True)
     os.makedirs('cache', exist_ok=True)
     os.makedirs('cache/image_analysis', exist_ok=True)
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+    os.makedirs(REPORTS_FOLDER, exist_ok=True)
+    os.makedirs(CHARTS_FOLDER, exist_ok=True)
 
 # Initialize the system in background
 def background_initialize():

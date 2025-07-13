@@ -1211,3 +1211,114 @@ Response headers:
 2025-07-13 20:13:29,122 - mediassist_agent - INFO - Background initialization completed successfully
 2025-07-13 20:15:39,701 - werkzeug - INFO -  * Detected change in 'C:\\Users\\dharma.c01\\Desktop\\semantic_hackethon\\app.py', reloading
 2025-07-13 20:15:40,954 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 21:29:14,643 - mediassist_agent - INFO - Azure OpenAI client initialized successfully (SSL verification disabled)
+2025-07-13 21:29:14,643 - mediassist_agent - INFO - Google AI model initialized successfully for image analysis fallback
+2025-07-13 21:29:14,645 - mediassist_agent - INFO - Starting Flask application
+2025-07-13 21:29:14,645 - mediassist_agent - INFO - Initializing MediAssist Agent System
+2025-07-13 21:29:14,645 - mediassist_agent - INFO - Initializing Model Manager
+2025-07-13 21:29:14,646 - mediassist_agent - INFO - Initialized Azure OpenAI model: gpt-4o-mini
+2025-07-13 21:29:14,646 - mediassist_agent - INFO - Initializing Data Manager
+2025-07-13 21:29:14,664 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.1.40:5002
+2025-07-13 21:29:14,664 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-13 21:29:14,665 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 21:29:14,718 - mediassist_agent - INFO - Loaded 5 clinical records
+2025-07-13 21:29:14,721 - mediassist_agent - INFO - Loaded 5 literature records
+2025-07-13 21:29:14,723 - mediassist_agent - INFO - Loaded 5 symptom records
+2025-07-13 21:29:14,725 - mediassist_agent - INFO - Loaded 5 drug records
+2025-07-13 21:29:14,729 - mediassist_agent - INFO - Loaded 24 diet records
+2025-07-13 21:29:14,729 - mediassist_agent - INFO - No embeddings found for clinical, will generate when needed
+2025-07-13 21:29:14,729 - mediassist_agent - INFO - No embeddings found for literature, will generate when needed
+2025-07-13 21:29:14,737 - mediassist_agent - INFO - Loaded 5 symptom embeddings
+2025-07-13 21:29:14,737 - mediassist_agent - INFO - No embeddings found for drug, will generate when needed
+2025-07-13 21:29:14,737 - mediassist_agent - INFO - No embeddings found for diet, will generate when needed
+2025-07-13 21:29:14,737 - mediassist_agent - INFO - Data Manager initialized successfully
+2025-07-13 21:29:14,737 - mediassist_agent - INFO - Registered 9 agents
+2025-07-13 21:29:14,737 - mediassist_agent - INFO - MediAssist Agent System initialized successfully
+2025-07-13 21:29:14,737 - mediassist_agent - INFO - Background initialization completed successfully
+2025-07-13 21:29:16,122 - mediassist_agent - INFO - Azure OpenAI client initialized successfully (SSL verification disabled)
+2025-07-13 21:29:16,122 - mediassist_agent - INFO - Google AI model initialized successfully for image analysis fallback
+2025-07-13 21:29:16,123 - mediassist_agent - INFO - Starting Flask application
+2025-07-13 21:29:16,123 - mediassist_agent - INFO - Initializing MediAssist Agent System
+2025-07-13 21:29:16,123 - mediassist_agent - INFO - Initializing Model Manager
+2025-07-13 21:29:16,124 - mediassist_agent - INFO - Initialized Azure OpenAI model: gpt-4o-mini
+2025-07-13 21:29:16,124 - mediassist_agent - INFO - Initializing Data Manager
+2025-07-13 21:29:16,129 - werkzeug - WARNING -  * Debugger is active!
+2025-07-13 21:29:16,155 - werkzeug - INFO -  * Debugger PIN: 190-857-381
+2025-07-13 21:29:16,186 - mediassist_agent - INFO - Loaded 5 clinical records
+2025-07-13 21:29:16,188 - mediassist_agent - INFO - Loaded 5 literature records
+2025-07-13 21:29:16,190 - mediassist_agent - INFO - Loaded 5 symptom records
+2025-07-13 21:29:16,192 - mediassist_agent - INFO - Loaded 5 drug records
+2025-07-13 21:29:16,195 - mediassist_agent - INFO - Loaded 24 diet records
+2025-07-13 21:29:16,195 - mediassist_agent - INFO - No embeddings found for clinical, will generate when needed
+2025-07-13 21:29:16,195 - mediassist_agent - INFO - No embeddings found for literature, will generate when needed
+2025-07-13 21:29:16,201 - mediassist_agent - INFO - Loaded 5 symptom embeddings
+2025-07-13 21:29:16,201 - mediassist_agent - INFO - No embeddings found for drug, will generate when needed
+2025-07-13 21:29:16,201 - mediassist_agent - INFO - No embeddings found for diet, will generate when needed
+2025-07-13 21:29:16,201 - mediassist_agent - INFO - Data Manager initialized successfully
+2025-07-13 21:29:16,201 - mediassist_agent - INFO - Registered 9 agents
+2025-07-13 21:29:16,201 - mediassist_agent - INFO - MediAssist Agent System initialized successfully
+2025-07-13 21:29:16,201 - mediassist_agent - INFO - Background initialization completed successfully
+2025-07-13 21:29:33,145 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:29:33] "GET / HTTP/1.1" 200 -
+2025-07-13 21:29:33,400 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:29:33] "GET /status HTTP/1.1" 200 -
+2025-07-13 21:29:33,748 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:29:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-13 21:37:16,660 - werkzeug - INFO -  * Detected change in '/Users/bob/Downloads/semantic_hackethon 2/app.py', reloading
+2025-07-13 21:37:17,306 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 21:58:31,054 - mediassist_agent - INFO - Azure OpenAI client initialized successfully (SSL verification disabled)
+2025-07-13 21:58:31,054 - mediassist_agent - INFO - Google AI model initialized successfully for image analysis fallback
+2025-07-13 21:58:31,056 - mediassist_agent - INFO - Starting Flask application
+2025-07-13 21:58:31,056 - mediassist_agent - INFO - Initializing MediAssist Agent System
+2025-07-13 21:58:31,056 - mediassist_agent - INFO - Initializing Model Manager
+2025-07-13 21:58:31,057 - mediassist_agent - INFO - Initialized Azure OpenAI model: gpt-4o-mini
+2025-07-13 21:58:31,057 - mediassist_agent - INFO - Initializing Data Manager
+2025-07-13 21:58:31,075 - mediassist_agent - INFO - Loaded 5 clinical records
+2025-07-13 21:58:31,078 - mediassist_agent - INFO - Loaded 5 literature records
+2025-07-13 21:58:31,080 - mediassist_agent - INFO - Loaded 5 symptom records
+2025-07-13 21:58:31,082 - mediassist_agent - INFO - Loaded 5 drug records
+2025-07-13 21:58:31,087 - mediassist_agent - INFO - Loaded 24 diet records
+2025-07-13 21:58:31,088 - mediassist_agent - INFO - No embeddings found for clinical, will generate when needed
+2025-07-13 21:58:31,088 - mediassist_agent - INFO - No embeddings found for literature, will generate when needed
+2025-07-13 21:58:31,088 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.1.40:5002
+2025-07-13 21:58:31,088 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-13 21:58:31,089 - werkzeug - INFO -  * Restarting with stat
+2025-07-13 21:58:31,097 - mediassist_agent - INFO - Loaded 5 symptom embeddings
+2025-07-13 21:58:31,097 - mediassist_agent - INFO - No embeddings found for drug, will generate when needed
+2025-07-13 21:58:31,097 - mediassist_agent - INFO - No embeddings found for diet, will generate when needed
+2025-07-13 21:58:31,097 - mediassist_agent - INFO - Data Manager initialized successfully
+2025-07-13 21:58:31,097 - mediassist_agent - INFO - Registered 10 agents
+2025-07-13 21:58:31,097 - mediassist_agent - INFO - MediAssist Agent System initialized successfully
+2025-07-13 21:58:31,097 - mediassist_agent - INFO - Background initialization completed successfully
+2025-07-13 21:58:33,112 - mediassist_agent - INFO - Azure OpenAI client initialized successfully (SSL verification disabled)
+2025-07-13 21:58:33,112 - mediassist_agent - INFO - Google AI model initialized successfully for image analysis fallback
+2025-07-13 21:58:33,113 - mediassist_agent - INFO - Starting Flask application
+2025-07-13 21:58:33,113 - mediassist_agent - INFO - Initializing MediAssist Agent System
+2025-07-13 21:58:33,113 - mediassist_agent - INFO - Initializing Model Manager
+2025-07-13 21:58:33,114 - mediassist_agent - INFO - Initialized Azure OpenAI model: gpt-4o-mini
+2025-07-13 21:58:33,114 - mediassist_agent - INFO - Initializing Data Manager
+2025-07-13 21:58:33,122 - mediassist_agent - INFO - Loaded 5 clinical records
+2025-07-13 21:58:33,122 - werkzeug - WARNING -  * Debugger is active!
+2025-07-13 21:58:33,136 - mediassist_agent - INFO - Loaded 5 literature records
+2025-07-13 21:58:33,139 - mediassist_agent - INFO - Loaded 5 symptom records
+2025-07-13 21:58:33,140 - werkzeug - INFO -  * Debugger PIN: 190-857-381
+2025-07-13 21:58:33,143 - mediassist_agent - INFO - Loaded 5 drug records
+2025-07-13 21:58:33,149 - mediassist_agent - INFO - Loaded 24 diet records
+2025-07-13 21:58:33,149 - mediassist_agent - INFO - No embeddings found for clinical, will generate when needed
+2025-07-13 21:58:33,149 - mediassist_agent - INFO - No embeddings found for literature, will generate when needed
+2025-07-13 21:58:33,160 - mediassist_agent - INFO - Loaded 5 symptom embeddings
+2025-07-13 21:58:33,160 - mediassist_agent - INFO - No embeddings found for drug, will generate when needed
+2025-07-13 21:58:33,160 - mediassist_agent - INFO - No embeddings found for diet, will generate when needed
+2025-07-13 21:58:33,160 - mediassist_agent - INFO - Data Manager initialized successfully
+2025-07-13 21:58:33,160 - mediassist_agent - INFO - Registered 10 agents
+2025-07-13 21:58:33,160 - mediassist_agent - INFO - MediAssist Agent System initialized successfully
+2025-07-13 21:58:33,160 - mediassist_agent - INFO - Background initialization completed successfully
+2025-07-13 21:58:39,976 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:58:39] "GET / HTTP/1.1" 200 -
+2025-07-13 21:58:40,315 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 21:58:40] "GET /status HTTP/1.1" 200 -
+2025-07-13 22:01:06,703 - mediassist_agent - INFO - Processing report analysis for 1 reports
+2025-07-13 22:01:26,976 - httpx - INFO - HTTP Request: POST https://eastus.api.cognitive.microsoft.com//openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-02-01 "HTTP/1.1 200 OK"
+2025-07-13 22:01:27,014 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 22:01:27] "POST /analyze-reports HTTP/1.1" 200 -
+2025-07-13 22:01:27,045 - werkzeug - INFO - 127.0.0.1 - - [13/Jul/2025 22:01:27] "GET /static/charts/health_chart_2e968be3.html HTTP/1.1" 200 -
