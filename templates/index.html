@@ -1,0 +1,2412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediAssist AI - Intelligent Medical Support System</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Primary palette */
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #dbeafe;
+            
+            /* Secondary palette */
+            --secondary: #10b981;
+            --secondary-dark: #047857;
+            --secondary-light: #d1fae5;
+            
+            /* Accent colors */
+            --accent-blue: #3b82f6;
+            --accent-indigo: #6366f1;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-red: #ef4444;
+            --accent-orange: #f97316;
+            --accent-yellow: #f59e0b;
+            --accent-green: #22c55e;
+            --accent-teal: #14b8a6;
+            --accent-cyan: #06b6d4;
+            
+            /* Neutrals */
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --black: #000000;
+            
+            /* System feedback */
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            
+            /* UI properties */
+            --border-radius-sm: 0.25rem;
+            --border-radius: 0.5rem;
+            --border-radius-md: 0.75rem;
+            --border-radius-lg: 1rem;
+            --border-radius-xl: 1.5rem;
+            --border-radius-2xl: 2rem;
+            --border-radius-full: 9999px;
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-colors: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), fill 0.3s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-opacity: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-shadow: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-transform: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Spacing */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-5: 1.25rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-10: 2.5rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            --space-24: 6rem;
+            
+            /* Content area */
+            --header-height: 70px;
+            --sidebar-width: 280px;
+            --container-max-width: 1200px;
+        }
+        
+        /* Global styling */
+        html, body {
+            height: 100%;
+            font-family: var(--font-sans);
+            scroll-behavior: smooth;
+            background-color: var(--gray-50);
+            color: var(--gray-800);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--gray-900);
+        }
+        
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        h4 {
+            font-size: 1.25rem;
+        }
+        
+        h5 {
+            font-size: 1.125rem;
+        }
+        
+        /* Layout components */
+        .navbar {
+            height: var(--header-height);
+            border-bottom: 1px solid var(--gray-200);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            box-shadow: var(--shadow-md);
+            z-index: 100;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            color: var(--white) !important;
+        }
+        
+        .navbar-brand i {
+            color: var(--primary-light);
+        }
+        
+        .navbar-tagline {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            opacity: 0.85;
+            color: var(--white);
+            font-weight: 300;
+        }
+        
+        .page-container {
+            min-height: calc(100vh - var(--header-height));
+            padding-top: var(--space-8);
+            padding-bottom: var(--space-16);
+        }
+        
+        .widget-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card {
+            border: none;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-all);
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+        
+        .card-header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: var(--space-5) var(--space-6);
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: var(--space-6);
+            flex: 1;
+            overflow: auto;
+        }
+        
+        .card-footer {
+            padding: var(--space-5) var(--space-6);
+            background-color: var(--gray-50);
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        /* Navigation */
+        .nav-tabs {
+            border-bottom: 1px solid var(--gray-200);
+            margin-bottom: var(--space-6);
+        }
+        
+        .nav-tabs .nav-link {
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: var(--space-3) var(--space-5);
+            margin-right: var(--space-2);
+            font-weight: 500;
+            color: var(--gray-600);
+            transition: var(--transition-colors);
+            border-radius: 0;
+        }
+        
+        .nav-tabs .nav-link:hover {
+            color: var(--primary);
+            border-color: transparent;
+        }
+        
+        .nav-tabs .nav-link.active {
+            color: var(--primary);
+            border-color: var(--primary);
+            background-color: transparent;
+        }
+        
+        /* Form elements */
+        .form-label {
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: var(--space-2);
+        }
+        
+        .form-control, .form-select {
+            padding: var(--space-3) var(--space-4);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius);
+            transition: var(--transition-colors);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: var(--space-3) var(--space-5);
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            border-radius: var(--border-radius);
+            transition: var(--transition-all);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-success {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+            color: var(--white);
+        }
+        
+        .btn-success:hover {
+            background-color: var(--secondary-dark);
+            border-color: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-outline-primary {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-lg {
+            padding: var(--space-4) var(--space-6);
+        }
+        
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: 0.875rem;
+        }
+        
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+        
+        /* Interactive components */
+        .agent-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--space-2) var(--space-3);
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: var(--border-radius-full);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: var(--space-2);
+            margin-bottom: var(--space-2);
+            transition: var(--transition-colors);
+        }
+        
+        .agent-chip.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .agent-chip i {
+            margin-right: var(--space-2);
+        }
+        
+        /* Response container */
+        .response-container {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .response-header {
+            padding: var(--space-4) var(--space-6);
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .response-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .response-body {
+            padding: var(--space-6);
+            overflow-y: auto;
+            flex: 1;
+        }
+        
+        .response-content {
+            line-height: 1.7;
+            color: var(--gray-800);
+        }
+        
+        .response-content h2 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-top: var(--space-6);
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-2);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .response-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .response-content ul, .response-content ol {
+            padding-left: var(--space-6);
+            margin-bottom: var(--space-5);
+        }
+        
+        .response-content ul li, .response-content ol li {
+            margin-bottom: var(--space-3);
+        }
+        
+        .response-content strong {
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+        
+        .response-content p {
+            margin-bottom: var(--space-4);
+        }
+        
+        .response-content .emoji {
+            font-size: 1.4em;
+            vertical-align: middle;
+            margin-right: var(--space-2);
+        }
+        
+        .response-footer {
+            padding: var(--space-4) var(--space-6);
+            border-top: 1px solid var(--gray-200);
+            background-color: var(--gray-50);
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Loading indicator */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            text-align: center;
+            color: var(--gray-500);
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--primary-light);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spinner 1s linear infinite;
+            margin-bottom: var(--space-5);
+        }
+        
+        @keyframes spinner {
+            to { transform: rotate(360deg); }
+        }
+        
+        .placeholder-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 250px;
+            text-align: center;
+            color: var(--gray-500);
+        }
+        
+        .placeholder-text i {
+            font-size: 3rem;
+            margin-bottom: var(--space-4);
+            opacity: 0.5;
+        }
+        
+        /* Image uploader */
+        .image-upload-container {
+            margin-bottom: var(--space-6);
+        }
+        
+        .image-upload-dropzone {
+            border: 2px dashed var(--gray-300);
+            border-radius: var(--border-radius);
+            padding: var(--space-8);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-all);
+            background-color: var(--gray-50);
+        }
+        
+        .image-upload-dropzone:hover, .image-upload-dropzone.active {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+        }
+        
+        .image-upload-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--space-4);
+        }
+        
+        .image-preview-container {
+            margin-top: var(--space-4);
+            text-align: center;
+            display: none;
+        }
+        
+        .image-preview {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-3) var(--space-4);
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            margin-top: var(--space-3);
+        }
+        
+        .file-name {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .remove-file {
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        /* Diet plan form */
+        .diet-form-container {
+            margin-bottom: var(--space-6);
+        }
+        
+        .diet-form-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: var(--space-5);
+            margin-bottom: var(--space-5);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-3);
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .diet-form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+        
+        .diet-form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Category indicators */
+        .category-indicator {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+        
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--border-radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: var(--transition-all);
+        }
+        
+        .category-badge i {
+            margin-right: var(--space-2);
+        }
+        
+        .category-badge.clinical {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .category-badge.literature {
+            background-color: #e0e7ff;
+            color: #4338ca;
+        }
+        
+        .category-badge.symptom {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .category-badge.drug {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+        
+        .category-badge.diet {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        /* Booking interface */
+        .booking-container {
+            margin-top: var(--space-6);
+            padding-top: var(--space-6);
+            border-top: 1px dashed var(--gray-300);
+        }
+        
+        .booking-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-5);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .booking-steps {
+            display: flex;
+            margin-bottom: var(--space-6);
+            overflow: hidden;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+        }
+        
+        .booking-step {
+            padding: var(--space-3) var(--space-4);
+            font-weight: 500;
+            flex: 1;
+            text-align: center;
+            font-size: 0.9rem;
+            position: relative;
+            background-color: var(--gray-100);
+            color: var(--gray-600);
+            border-right: 1px solid var(--gray-200);
+            overflow: hidden;
+        }
+        
+        .booking-step:last-child {
+            border-right: none;
+        }
+        
+        .booking-step.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .booking-step.completed {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        .booking-step.completed::after {
+            content: '✓';
+            margin-left: var(--space-2);
+        }
+        
+        .booking-step-content {
+            display: none;
+        }
+        
+        .booking-step-content.active {
+            display: block;
+        }
+        
+        .doctor-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+        
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition-all);
+            border: 2px solid transparent;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .doctor-card.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+        
+        .doctor-image-container {
+            position: relative;
+            padding-top: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+        }
+        
+        .doctor-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .doctor-info {
+            padding: var(--space-4);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .doctor-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: var(--space-2);
+            color: var(--gray-900);
+        }
+        
+        .doctor-specialty {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: var(--space-2);
+        }
+        
+        .doctor-experience {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-3);
+        }
+        
+        .doctor-bio {
+            font-size: 0.85rem;
+            color: var(--gray-700);
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: var(--space-3);
+            margin-bottom: var(--space-6);
+        }
+        
+        .time-slot {
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: var(--space-3) var(--space-4);
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--transition-all);
+            text-align: center;
+        }
+        
+        .time-slot:hover {
+            background-color: var(--gray-200);
+        }
+        
+        .time-slot.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        .time-slot.booked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: var(--gray-300);
+            color: var(--gray-600);
+        }
+        
+        .booking-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-6);
+        }
+        
+        .confirmation-summary {
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: var(--space-5);
+            margin-bottom: var(--space-5);
+        }
+        
+        .confirmation-item {
+            margin-bottom: var(--space-3);
+            display: flex;
+        }
+        
+        .confirmation-label {
+            font-weight: 600;
+            width: 120px;
+            color: var(--gray-700);
+        }
+        
+        .confirmation-value {
+            flex: 1;
+            color: var(--gray-900);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: var(--space-4);
+            display: inline-block;
+        }
+        
+        /* Media queries */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.25rem;
+            }
+            
+            .nav-tabs .nav-link {
+                padding: var(--space-2) var(--space-3);
+                font-size: 0.875rem;
+            }
+            
+            .card-body {
+                padding: var(--space-4);
+            }
+            
+            .diet-form-group {
+                min-width: 100%;
+            }
+            
+            .doctor-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-steps {
+                flex-direction: column;
+            }
+            
+            .booking-step {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+            }
+            
+            .booking-step:last-child {
+                border-bottom: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            :root {
+                --header-height: 60px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+            
+            .navbar-tagline {
+                display: none;
+            }
+            
+            .response-header {
+                padding: var(--space-3) var(--space-4);
+            }
+            
+            .response-body {
+                padding: var(--space-4);
+            }
+            
+            .time-slots {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Dark mode support */
+        .dark-mode {
+            --white: #1a1a1a;
+            --black: #ffffff;
+            --gray-50: #121212;
+            --gray-100: #1e1e1e;
+            --gray-200: #2d2d2d;
+            --gray-300: #404040;
+            --gray-400: #6b6b6b;
+            --gray-500: #909090;
+            --gray-600: #bdbdbd;
+            --gray-700: #d4d4d4;
+            --gray-800: #e8e8e8;
+            --gray-900: #f5f5f5;
+            
+            --primary-light: rgba(37, 99, 235, 0.2);
+            --secondary-light: rgba(16, 185, 129, 0.2);
+            
+            color-scheme: dark;
+        }
+        
+        .dark-mode .card,
+        .dark-mode .diet-form-section,
+        .dark-mode .response-container {
+            background-color: var(--gray-100);
+            border-color: var(--gray-200);
+        }
+        
+        .dark-mode .card-header,
+        .dark-mode .response-header {
+            background-color: var(--gray-100);
+            border-color: var(--gray-200);
+        }
+        
+        .dark-mode .card-footer,
+        .dark-mode .response-footer {
+            background-color: var(--gray-50);
+            border-color: var(--gray-200);
+        }
+        
+        .dark-mode .form-control,
+        .dark-mode .form-select {
+            background-color: var(--gray-100);
+            border-color: var(--gray-300);
+            color: var(--gray-700);
+        }
+        
+        .dark-mode .image-upload-dropzone {
+            background-color: var(--gray-100);
+            border-color: var(--gray-300);
+        }
+        
+        .dark-mode .nav-tabs {
+            border-color: var(--gray-300);
+        }
+        
+        .dark-mode .doctor-card {
+            background-color: var(--gray-100);
+        }
+        
+        .dark-mode .doctor-card.selected {
+            background-color: var(--primary-light);
+        }
+        
+        .dark-mode .time-slot {
+            background-color: var(--gray-200);
+        }
+        
+        .dark-mode .time-slot.selected {
+            background-color: var(--primary-light);
+        }
+        
+        .dark-mode .confirmation-summary {
+            background-color: var(--gray-200);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-heartbeat me-2"></i> MediAssist AI
+            </a>
+            <span class="navbar-tagline d-none d-sm-inline">Intelligent Medical Decision Support System</span>
+            <div class="ms-auto">
+                <button id="theme-toggle" class="btn btn-sm btn-outline-light">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main content -->
+    <div class="page-container">
+        <div class="container">
+            <!-- System status alert -->
+            <div id="system-status" class="alert alert-info mb-4" style="display: none;">
+                <div class="d-flex align-items-center">
+                    <div class="loading-spinner me-3" style="width: 20px; height: 20px;"></div>
+                    <div>System is initializing. Some features may be temporarily unavailable.</div>
+                </div>
+            </div>
+            
+            <!-- Main tabs -->
+            <ul class="nav nav-tabs" id="main-tabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="query-tab" data-bs-toggle="tab" data-bs-target="#query-panel" type="button" role="tab">
+                        <i class="fas fa-comment-medical me-2"></i> Medical Query
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-panel" type="button" role="tab">
+                        <i class="fas fa-x-ray me-2"></i> Image Analysis
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="diet-tab" data-bs-toggle="tab" data-bs-target="#diet-panel" type="button" role="tab">
+                        <i class="fas fa-apple-alt me-2"></i> Diet Plan
+                    </button>
+                </li>
+            </ul>
+            
+            <!-- Tab content -->
+            <div class="tab-content" id="main-tab-content">
+                <!-- Medical Query Panel -->
+                <div class="tab-pane fade show active" id="query-panel" role="tabpanel" aria-labelledby="query-tab">
+                    <div class="row g-4 mt-2">
+                        <div class="col-lg-5">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <i class="fas fa-search-plus me-2 text-primary"></i> Medical Query
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <label for="query-text" class="form-label">
+                                            <i class="fas fa-pen-fancy text-primary me-2"></i>Your Medical Question
+                                        </label>
+                                        <textarea id="query-text" class="form-control" rows="5" placeholder="Enter your medical question or describe your concern..."></textarea>
+                                        <div class="form-text mt-2">Our AI will automatically analyze your query and route it to the appropriate medical specialist agent.</div>
+                                    </div>
+                                    
+                                    <div class="category-indicator" id="detected-category">
+                                        <!-- Dynamically populated when a category is detected -->
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button id="refresh-embeddings" class="btn btn-sm btn-outline-primary d-none">
+                                            <i class="fas fa-sync-alt me-2"></i> Refresh Knowledge
+                                        </button>
+                                        <button id="submit-query" class="btn btn-primary btn-icon w-100">
+                                            <i class="fas fa-paper-plane"></i>
+                                            <span>Submit Query</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-7">
+                            <div class="response-container h-100">
+                                <div class="response-header">
+                                    <h5 class="response-title">
+                                        <i class="fas fa-robot text-primary me-2"></i>
+                                        <span id="response-agent-title">AI Medical Assistant</span>
+                                    </h5>
+                                    <span class="badge bg-primary">AI Generated</span>
+                                </div>
+                                <div class="response-body">
+                                    <div id="query-response" class="response-content">
+                                        <div class="placeholder-text">
+                                            <i class="fas fa-comment-medical"></i>
+                                            <p>Ask any medical question to receive AI-generated insights.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Booking interface container (initially hidden) -->
+                                    <div id="booking-container" class="booking-container" style="display: none;">
+                                        <div class="booking-header">
+                                            <i class="fas fa-calendar-check me-2"></i>
+                                            Book an Appointment with a Specialist
+                                        </div>
+                                        
+                                        <!-- Steps indicator -->
+                                        <div class="booking-steps">
+                                            <div class="booking-step active" id="step-doctor">1. Select Doctor</div>
+                                            <div class="booking-step" id="step-time">2. Choose Time</div>
+                                            <div class="booking-step" id="step-information">3. Your Information</div>
+                                            <div class="booking-step" id="step-confirmation">4. Confirmation</div>
+                                        </div>
+                                        
+                                        <!-- Step 1: Doctor Selection -->
+                                        <div class="booking-step-content active" id="doctor-selection">
+                                            <p class="mb-4">Based on your symptoms, here are the recommended specialists:</p>
+                                            <div class="doctor-list" id="doctor-list">
+                                                <!-- Dynamically populated with doctors -->
+                                            </div>
+                                            <div class="booking-actions">
+                                                <div></div> <!-- Empty div for spacing -->
+                                                <button id="doctor-next" class="btn btn-primary" disabled>
+                                                    Continue <i class="fas fa-arrow-right ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Step 2: Time Slot Selection -->
+                                        <div class="booking-step-content" id="time-selection">
+                                            <p class="mb-4">Select an available appointment time:</p>
+                                            <div class="time-slots" id="time-slots">
+                                                <!-- Dynamically populated with time slots -->
+                                            </div>
+                                            <div class="booking-actions">
+                                                <button id="time-prev" class="btn btn-outline-primary">
+                                                    <i class="fas fa-arrow-left me-2"></i> Back
+                                                </button>
+                                                <button id="time-next" class="btn btn-primary" disabled>
+                                                    Continue <i class="fas fa-arrow-right ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Step 3: Contact Information -->
+                                        <div class="booking-step-content" id="information-collection">
+                                            <p class="mb-4">Please provide your contact information:</p>
+                                            <div class="mb-3">
+                                                <label for="patient-email" class="form-label">Email Address *</label>
+                                                <input type="email" id="patient-email" class="form-control" placeholder="your.email@example.com" required>
+                                                <div class="form-text">We'll send your appointment confirmation to this email.</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="patient-name" class="form-label">Your Name *</label>
+                                                <input type="text" id="patient-name" class="form-control" placeholder="Full Name" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="patient-phone" class="form-label">Phone Number</label>
+                                                <input type="tel" id="patient-phone" class="form-control" placeholder="(123) 456-7890">
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="patient-notes" class="form-label">Additional Notes (optional)</label>
+                                                <textarea id="patient-notes" class="form-control" rows="3" placeholder="Any additional information you'd like to share with the doctor"></textarea>
+                                            </div>
+                                            <div class="booking-actions">
+                                                <button id="info-prev" class="btn btn-outline-primary">
+                                                    <i class="fas fa-arrow-left me-2"></i> Back
+                                                </button>
+                                                <button id="info-next" class="btn btn-primary" disabled>
+                                                    Review & Confirm <i class="fas fa-arrow-right ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Step 4: Confirmation -->
+                                        <div class="booking-step-content" id="booking-confirmation">
+                                            <p class="mb-4">Please review your appointment details:</p>
+                                            <div class="confirmation-summary">
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Doctor:</div>
+                                                    <div class="confirmation-value" id="confirm-doctor">Dr. Example</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Specialty:</div>
+                                                    <div class="confirmation-value" id="confirm-specialty">Cardiology</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Date & Time:</div>
+                                                    <div class="confirmation-value" id="confirm-time">Monday, March 10 at 10:00 AM</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Your Email:</div>
+                                                    <div class="confirmation-value" id="confirm-email">example@email.com</div>
+                                                </div>
+                                            </div>
+                                            <div class="booking-actions">
+                                                <button id="confirm-prev" class="btn btn-outline-primary">
+                                                    <i class="fas fa-arrow-left me-2"></i> Back
+                                                </button>
+                                                <button id="confirm-booking" class="btn btn-success">
+                                                    Confirm Appointment <i class="fas fa-check ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Success Message (initially hidden) -->
+                                        <div class="booking-step-content" id="booking-success" style="text-align: center;">
+                                            <div class="success-icon">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <h4 class="mb-4">Your appointment has been confirmed!</h4>
+                                            <div class="confirmation-summary mb-4">
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Doctor:</div>
+                                                    <div class="confirmation-value" id="success-doctor">Dr. Example</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Date & Time:</div>
+                                                    <div class="confirmation-value" id="success-time">Monday, March 10 at 10:00 AM</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Meet Link:</div>
+                                                    <div class="confirmation-value">
+                                                        <a href="#" id="success-link" target="_blank">Google Meet Link</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-muted mb-4">A confirmation email has been sent to your email address with all the details.</p>
+                                            <button id="new-query" class="btn btn-primary">
+                                                <i class="fas fa-comment-medical me-2"></i> Ask Another Question
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="response-footer">
+                                    <div id="query-metadata">Ready to assist with your medical questions</div>
+                                    <div id="query-time"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Analysis Panel -->
+                <div class="tab-pane fade" id="image-panel" role="tabpanel" aria-labelledby="image-tab">
+                    <div class="row g-4 mt-2">
+                        <div class="col-lg-5">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <i class="fas fa-camera-retro me-2 text-primary"></i> Medical Image Analysis
+                                </div>
+                                <div class="card-body">
+                                    <div class="image-upload-container">
+                                        <label for="image-upload" class="image-upload-dropzone" id="dropzone">
+                                            <div class="image-upload-icon">
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                            </div>
+                                            <h5>Upload Medical Image</h5>
+                                            <p class="text-muted">Drag and drop your image here or click to browse</p>
+                                            <p class="small text-muted">Supported formats: JPG, PNG, DICOM, TIFF, BMP</p>
+                                        </label>
+                                        <input type="file" id="image-upload" class="d-none" accept="image/*">
+                                        
+                                        <!-- Preview container -->
+                                        <div class="image-preview-container" id="image-preview-container">
+                                            <img id="image-preview" class="image-preview" alt="Preview">
+                                            <div class="file-info">
+                                                <div class="file-name" id="image-filename">No file selected</div>
+                                                <div class="remove-file" id="remove-image">
+                                                    <i class="fas fa-times-circle"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="image-prompt" class="form-label">
+                                            <i class="fas fa-file-medical-alt text-primary me-2"></i>Analysis Instructions
+                                        </label>
+                                        <textarea id="image-prompt" class="form-control" rows="3" placeholder="Please describe what you'd like to analyze in this image (e.g., 'Check this chest X-ray for signs of pneumonia')..."></textarea>
+                                        <div class="form-text mt-2">Provide specific context to guide the AI's analysis.</div>
+                                    </div>
+                                    
+                                    <button id="analyze-image" class="btn btn-primary btn-icon w-100">
+                                        <i class="fas fa-microscope"></i>
+                                        <span>Analyze Image</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-7">
+                            <div class="response-container h-100">
+                                <div class="response-header">
+                                    <h5 class="response-title">
+                                        <i class="fas fa-diagnoses text-primary me-2"></i>
+                                        Image Analysis Results
+                                    </h5>
+                                    <span class="badge bg-primary">AI Generated</span>
+                                </div>
+                                <div class="response-body">
+                                    <div id="image-response" class="response-content">
+                                        <div class="placeholder-text">
+                                            <i class="fas fa-x-ray"></i>
+                                            <p>Upload a medical image and provide analysis instructions to receive AI insights.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="response-footer">
+                                    <div id="image-metadata">Upload an image to begin</div>
+                                    <div id="image-time"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Diet Plan Panel -->
+                <div class="tab-pane fade" id="diet-panel" role="tabpanel" aria-labelledby="diet-tab">
+                    <div class="row g-4 mt-2">
+                        <div class="col-lg-5">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <i class="fas fa-utensils me-2 text-primary"></i> Personalized Diet Plan Generator
+                                </div>
+                                <div class="card-body">
+                                    <div class="diet-form-container">
+                                        <div class="diet-form-section">
+                                            <h5 class="section-title">
+                                                <i class="fas fa-user me-2 text-primary"></i>Personal Details
+                                            </h5>
+                                            <div class="diet-form-row">
+                                                <div class="diet-form-group">
+                                                    <label for="diet-age" class="form-label">Age</label>
+                                                    <input type="number" id="diet-age" class="form-control" min="1" max="120" placeholder="Years">
+                                                </div>
+                                                <div class="diet-form-group">
+                                                    <label for="diet-gender" class="form-label">Gender</label>
+                                                    <select id="diet-gender" class="form-select">
+                                                        <option value="" selected disabled>Select</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                        <option value="Non-binary">Non-binary</option>
+                                                        <option value="Prefer not to say">Prefer not to say</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="diet-form-row">
+                                                <div class="diet-form-group">
+                                                    <label for="diet-height" class="form-label">Height</label>
+                                                    <input type="number" id="diet-height" class="form-control" min="50" max="250" placeholder="cm">
+                                                </div>
+                                                <div class="diet-form-group">
+                                                    <label for="diet-weight" class="form-label">Weight</label>
+                                                    <input type="number" id="diet-weight" class="form-control" min="20" max="300" placeholder="kg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="diet-form-section">
+                                            <h5 class="section-title">
+                                                <i class="fas fa-bullseye me-2 text-primary"></i>Goals & Activity
+                                            </h5>
+                                            <div class="diet-form-row">
+                                                <div class="diet-form-group">
+                                                    <label for="diet-goal" class="form-label">Health Goal</label>
+                                                    <select id="diet-goal" class="form-select">
+                                                        <option value="" selected disabled>Select</option>
+                                                        <option value="Weight loss">Weight loss</option>
+                                                        <option value="Weight gain">Weight gain</option>
+                                                        <option value="Maintenance">Maintenance</option>
+                                                        <option value="Muscle building">Muscle building</option>
+                                                        <option value="General health">General health</option>
+                                                        <option value="Athletic performance">Athletic performance</option>
+                                                    </select>
+                                                </div>
+                                                <div class="diet-form-group">
+                                                    <label for="diet-activity" class="form-label">Activity Level</label>
+                                                    <select id="diet-activity" class="form-select">
+                                                        <option value="" selected disabled>Select</option>
+                                                        <option value="Sedentary">Sedentary (little/no exercise)</option>
+                                                        <option value="Lightly active">Lightly active (1-3 days/week)</option>
+                                                        <option value="Moderately active">Moderately active (3-5 days/week)</option>
+                                                        <option value="Very active">Very active (6-7 days/week)</option>
+                                                        <option value="Extra active">Extra active (very intense exercise)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="diet-form-section">
+                                            <h5 class="section-title">
+                                                <i class="fas fa-apple-alt me-2 text-primary"></i>Dietary Preferences
+                                            </h5>
+                                            <div class="mb-3">
+                                                <label for="diet-preferences" class="form-label">Dietary Preferences</label>
+                                                <select id="diet-preferences" class="form-select">
+                                                    <option value="No specific preference">No specific preference</option>
+                                                    <option value="Vegetarian">Vegetarian</option>
+                                                    <option value="Vegan">Vegan</option>
+                                                    <option value="Pescatarian">Pescatarian</option>
+                                                    <option value="Keto">Keto</option>
+                                                    <option value="Paleo">Paleo</option>
+                                                    <option value="Mediterranean">Mediterranean</option>
+                                                    <option value="Low carb">Low carb</option>
+                                                    <option value="Low fat">Low fat</option>
+                                                    <option value="Gluten-free">Gluten-free</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="diet-conditions" class="form-label">Medical Conditions</label>
+                                                <textarea id="diet-conditions" class="form-control" rows="2" placeholder="List any medical conditions that may affect your diet (e.g., diabetes, hypertension)"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="diet-allergies" class="form-label">Allergies/Intolerances</label>
+                                                <textarea id="diet-allergies" class="form-control" rows="2" placeholder="List any food allergies or intolerances (e.g., nuts, dairy, gluten)"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="diet-supplements" class="form-label">Current Supplements</label>
+                                                <textarea id="diet-supplements" class="form-control" rows="2" placeholder="List any supplements you currently take (optional)"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <button id="generate-diet" class="btn btn-primary btn-icon w-100">
+                                            <i class="fas fa-utensils"></i>
+                                            <span>Generate Diet Plan</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-7">
+                            <div class="response-container h-100">
+                                <div class="response-header">
+                                    <h5 class="response-title">
+                                        <i class="fas fa-clipboard-list text-primary me-2"></i>
+                                        Your Personalized Diet Plan
+                                    </h5>
+                                    <span class="badge bg-primary">AI Generated</span>
+                                </div>
+                                <div class="response-body">
+                                    <div id="diet-response" class="response-content">
+                                        <div class="placeholder-text">
+                                            <i class="fas fa-apple-alt"></i>
+                                            <p>Complete your profile to receive a personalized 7-day diet plan.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="response-footer">
+                                    <div id="diet-metadata">Fill out the form to get started</div>
+                                    <div id="diet-time"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="mt-5 py-4 bg-light border-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-heartbeat text-primary me-2"></i>
+                        <span class="fw-bold">MediAssist AI</span>
+                    </div>
+                    <p class="text-muted small mt-2 mb-0">
+                        An intelligent medical decision support system powered by advanced AI agents.
+                        <br>© 2025 MediAssist AI. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="small text-muted">
+                        <div class="mb-1"><i class="fas fa-shield-alt me-1"></i> For educational purposes only</div>
+                        <div>Not a substitute for professional medical advice, diagnosis, or treatment.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap and core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Main application JS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize system state
+            let systemInitialized = false;
+            let darkMode = localStorage.getItem('darkMode') === 'true';
+            let lastDetectedAgent = '';
+            let currentSpecialists = []; // Store specialists data
+            let selectedDoctor = null;
+            let selectedTimeSlot = null;
+            
+            // Get DOM elements
+            const systemStatusAlert = document.getElementById('system-status');
+            const themeToggle = document.getElementById('theme-toggle');
+            const detectedCategory = document.getElementById('detected-category');
+            const bookingContainer = document.getElementById('booking-container');
+            
+            // Get booking elements
+            const doctorList = document.getElementById('doctor-list');
+            const timeSlots = document.getElementById('time-slots');
+            const patientEmail = document.getElementById('patient-email');
+            const patientName = document.getElementById('patient-name');
+            const patientPhone = document.getElementById('patient-phone');
+            const patientNotes = document.getElementById('patient-notes');
+            
+            // Confirmation elements
+            const confirmDoctor = document.getElementById('confirm-doctor');
+            const confirmSpecialty = document.getElementById('confirm-specialty');
+            const confirmTime = document.getElementById('confirm-time');
+            const confirmEmail = document.getElementById('confirm-email');
+            
+            // Success elements
+            const successDoctor = document.getElementById('success-doctor');
+            const successTime = document.getElementById('success-time');
+            const successLink = document.getElementById('success-link');
+            
+            // Step buttons
+            const doctorNextBtn = document.getElementById('doctor-next');
+            const timePrevBtn = document.getElementById('time-prev');
+            const timeNextBtn = document.getElementById('time-next');
+            const infoPrevBtn = document.getElementById('info-prev');
+            const infoNextBtn = document.getElementById('info-next');
+            const confirmPrevBtn = document.getElementById('confirm-prev');
+            const confirmBookingBtn = document.getElementById('confirm-booking');
+            const newQueryBtn = document.getElementById('new-query');
+            
+            // Agent icons and names mapping
+            const agentIcons = {
+                'clinical': 'fas fa-user-md',
+                'literature': 'fas fa-book-medical',
+                'symptom': 'fas fa-stethoscope',
+                'drug': 'fas fa-pills',
+                'diet': 'fas fa-carrot',
+                'router': 'fas fa-random',
+                'reflection': 'fas fa-brain'
+            };
+            
+            const agentNames = {
+                'clinical': 'Clinical Specialist',
+                'literature': 'Medical Researcher',
+                'symptom': 'Diagnostic Expert',
+                'drug': 'Pharmaceutical Specialist',
+                'diet': 'Nutrition Expert',
+                'router': 'Query Router',
+                'reflection': 'Analysis Reviewer'
+            };
+            
+            // Apply saved theme
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            // Theme toggle handler
+            themeToggle.addEventListener('click', function() {
+                darkMode = !darkMode;
+                document.body.classList.toggle('dark-mode', darkMode);
+                themeToggle.innerHTML = darkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', darkMode);
+            });
+            
+            // Check system status
+            checkSystemStatus();
+            
+            function checkSystemStatus() {
+                fetch('/status')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.initialized) {
+                            systemInitialized = true;
+                            systemStatusAlert.style.display = 'none';
+                            
+                            // Show refresh embeddings button once initialized
+                            document.getElementById('refresh-embeddings').classList.remove('d-none');
+                        } else {
+                            systemStatusAlert.style.display = 'block';
+                            // Check again in 5 seconds
+                            setTimeout(checkSystemStatus, 5000);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error checking system status:', error);
+                        systemStatusAlert.style.display = 'block';
+                        systemStatusAlert.className = 'alert alert-danger mb-4';
+                        systemStatusAlert.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Error connecting to the server. Please refresh the page.';
+                    });
+            }
+            
+            // Function to update the detected agent category UI
+            function updateDetectedCategory(agentType) {
+                if (!agentType) return;
+                
+                const icon = agentIcons[agentType] || 'fas fa-robot';
+                const name = agentNames[agentType] || 'AI Assistant';
+                
+                // Update UI
+                detectedCategory.innerHTML = `
+                    <div class="category-badge ${agentType}">
+                        <i class="${icon}"></i>
+                        <span>Query handled by: ${name}</span>
+                    </div>
+                `;
+                
+                lastDetectedAgent = agentType;
+            }
+            
+            // ===== QUERY HANDLING =====
+            const queryText = document.getElementById('query-text');
+            const submitQueryBtn = document.getElementById('submit-query');
+            const queryResponse = document.getElementById('query-response');
+            const queryMetadata = document.getElementById('query-metadata');
+            const queryTime = document.getElementById('query-time');
+            const responseAgentTitle = document.getElementById('response-agent-title');
+            
+            submitQueryBtn.addEventListener('click', function() {
+                if (!systemInitialized) {
+                    alert('System is still initializing. Please wait a moment and try again.');
+                    return;
+                }
+                
+                const query = queryText.value.trim();
+                if (!query) {
+                    queryResponse.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Please enter a medical query.
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Update UI to show loading state
+                submitQueryBtn.disabled = true;
+                submitQueryBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
+                
+                queryResponse.innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <div class="mt-3">Analyzing your query...</div>
+                        <div class="text-muted small mt-2">This may take a few moments</div>
+                    </div>
+                `;
+                
+                queryMetadata.textContent = 'Processing query...';
+                queryTime.textContent = '';
+                
+                // Clear previous category detection
+                detectedCategory.innerHTML = '';
+                bookingContainer.style.display = 'none';
+                
+                // Reset booking interface
+                resetBookingInterface();
+                
+                // Send query to server with no predefined type (automatic categorization)
+                fetch('/query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: query
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reset button state
+                    submitQueryBtn.disabled = false;
+                    submitQueryBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Submit Query</span>';
+                    
+                    if (data.status === 'success') {
+                        queryResponse.innerHTML = data.response;
+                        queryTime.textContent = data.processing_time || '';
+                        
+                        // Update UI with detected agent type
+                        const agentType = data.agent || 'router';
+                        updateDetectedCategory(agentType);
+                        
+                        // Update agent title
+                        responseAgentTitle.textContent = agentNames[agentType] || 'AI Medical Assistant';
+                        
+                        // Show booking interface if symptom agent was used
+                        if (agentType === 'symptom' || data.show_booking) {
+                            // If specialists data is included in the response, use it
+                            if (data.specialists && data.specialists.length > 0) {
+                                currentSpecialists = data.specialists;
+                                populateDoctors(data.specialists);
+                                bookingContainer.style.display = 'block';
+                            }
+                        }
+                        
+                        // Update metadata
+                        let metadataText = `Processed by ${agentNames[agentType] || agentType} agent`;
+                        if (data.direct_response) {
+                            metadataText += ' (general knowledge)';
+                        }
+                        queryMetadata.textContent = metadataText;
+                    } else {
+                        queryResponse.innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                ${data.response || 'An error occurred while processing your query.'}
+                            </div>
+                        `;
+                        queryMetadata.textContent = 'Error processing query';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting query:', error);
+                    queryResponse.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-wifi-slash me-2"></i>
+                            Network error: Unable to connect to the server.
+                        </div>
+                    `;
+                    
+                    // Reset button state
+                    submitQueryBtn.disabled = false;
+                    submitQueryBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Submit Query</span>';
+                    queryMetadata.textContent = 'Connection error';
+                });
+            });
+            
+            // Reset booking interface to initial state
+            function resetBookingInterface() {
+                // Reset selected values
+                selectedDoctor = null;
+                selectedTimeSlot = null;
+                
+                // Reset all form fields
+                patientEmail.value = '';
+                patientName.value = '';
+                patientPhone.value = '';
+                patientNotes.value = '';
+                
+                // Reset step buttons
+                doctorNextBtn.disabled = true;
+                timeNextBtn.disabled = true;
+                infoNextBtn.disabled = true;
+                
+                // Reset steps display
+                const steps = document.querySelectorAll('.booking-step');
+                steps.forEach(step => {
+                    step.classList.remove('active', 'completed');
+                });
+                document.getElementById('step-doctor').classList.add('active');
+                
+                // Reset step content visibility
+                const stepContents = document.querySelectorAll('.booking-step-content');
+                stepContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById('doctor-selection').classList.add('active');
+                
+                // Hide success view
+                document.getElementById('booking-success').classList.remove('active');
+            }
+            
+            // Populate doctors list
+            function populateDoctors(doctors) {
+                doctorList.innerHTML = '';
+                
+                doctors.forEach(doctor => {
+                    const doctorCard = document.createElement('div');
+                    doctorCard.className = 'doctor-card';
+                    doctorCard.dataset.doctorId = doctor.id;
+                    
+                    doctorCard.innerHTML = `
+                        <div class="doctor-image-container">
+                            <img src="${doctor.image_url}" alt="${doctor.name}" class="doctor-image">
+                        </div>
+                        <div class="doctor-info">
+                            <div class="doctor-name">${doctor.name}</div>
+                            <div class="doctor-specialty">${doctor.specialty}</div>
+                            <div class="doctor-experience">${doctor.experience} years experience</div>
+                            <div class="doctor-bio">${doctor.bio}</div>
+                        </div>
+                    `;
+                    
+                    doctorCard.addEventListener('click', function() {
+                        // Remove selection from all doctors
+                        document.querySelectorAll('.doctor-card').forEach(card => {
+                            card.classList.remove('selected');
+                        });
+                        
+                        // Add selection to this doctor
+                        this.classList.add('selected');
+                        
+                        // Store selected doctor
+                        selectedDoctor = doctor;
+                        
+                        // Enable next button
+                        doctorNextBtn.disabled = false;
+                    });
+                    
+                    doctorList.appendChild(doctorCard);
+                });
+            }
+            
+            // Populate time slots
+            function populateTimeSlots(slots) {
+                timeSlots.innerHTML = '';
+                
+                if (!slots || slots.length === 0) {
+                    timeSlots.innerHTML = '<p class="text-center">No available time slots found.</p>';
+                    return;
+                }
+                
+                const now = new Date();
+                const tomorrow = new Date(now);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const dayLabels = {};
+                
+                // Group slots by day
+                const dayGroups = {};
+                
+                slots.forEach(slot => {
+                    const slotDate = new Date(slot.start_time);
+                    const dateString = slotDate.toDateString();
+                    
+                    if (!dayGroups[dateString]) {
+                        dayGroups[dateString] = [];
+                    }
+                    
+                    dayGroups[dateString].push(slot);
+                });
+                
+                // Create day sections
+                Object.keys(dayGroups).sort().forEach(dateString => {
+                    const dateHeader = document.createElement('div');
+                    dateHeader.className = 'w-100 mb-2 mt-3';
+                    dateHeader.innerHTML = `<h6>${dateString}</h6>`;
+                    timeSlots.appendChild(dateHeader);
+                    
+                    dayGroups[dateString].forEach(slot => {
+                        const timeSlotElem = document.createElement('div');
+                        timeSlotElem.className = 'time-slot';
+                        if (slot.is_booked) {
+                            timeSlotElem.classList.add('booked');
+                        }
+                        timeSlotElem.dataset.slotId = slot.formatted_time;
+                        
+                        const startTime = new Date(slot.start_time);
+                        const timeString = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        
+                        timeSlotElem.textContent = timeString;
+                        
+                        if (!slot.is_booked) {
+                            timeSlotElem.addEventListener('click', function() {
+                                // Remove selection from all time slots
+                                document.querySelectorAll('.time-slot').forEach(s => {
+                                    s.classList.remove('selected');
+                                });
+                                
+                                // Add selection to this time slot
+                                this.classList.add('selected');
+                                
+                                // Store selected time slot
+                                selectedTimeSlot = slot;
+                                
+                                // Enable next button
+                                timeNextBtn.disabled = false;
+                            });
+                        }
+                        
+                        timeSlots.appendChild(timeSlotElem);
+                    });
+                });
+            }
+            
+            // Handle booking step navigation
+            doctorNextBtn.addEventListener('click', function() {
+                if (selectedDoctor) {
+                    // Update UI - mark step 1 as completed
+                    document.getElementById('step-doctor').classList.remove('active');
+                    document.getElementById('step-doctor').classList.add('completed');
+                    document.getElementById('step-time').classList.add('active');
+                    
+                    // Show time selection step
+                    document.getElementById('doctor-selection').classList.remove('active');
+                    document.getElementById('time-selection').classList.add('active');
+                    
+                    // Populate time slots
+                    populateTimeSlots(selectedDoctor.available_slots);
+                }
+            });
+            
+            timePrevBtn.addEventListener('click', function() {
+                // Go back to doctor selection
+                document.getElementById('step-time').classList.remove('active');
+                document.getElementById('step-doctor').classList.remove('completed');
+                document.getElementById('step-doctor').classList.add('active');
+                
+                document.getElementById('time-selection').classList.remove('active');
+                document.getElementById('doctor-selection').classList.add('active');
+            });
+            
+            timeNextBtn.addEventListener('click', function() {
+                if (selectedTimeSlot) {
+                    // Update UI - mark step 2 as completed
+                    document.getElementById('step-time').classList.remove('active');
+                    document.getElementById('step-time').classList.add('completed');
+                    document.getElementById('step-information').classList.add('active');
+                    
+                    // Show information collection step
+                    document.getElementById('time-selection').classList.remove('active');
+                    document.getElementById('information-collection').classList.add('active');
+                }
+            });
+            
+            infoPrevBtn.addEventListener('click', function() {
+                // Go back to time selection
+                document.getElementById('step-information').classList.remove('active');
+                document.getElementById('step-time').classList.remove('completed');
+                document.getElementById('step-time').classList.add('active');
+                
+                document.getElementById('information-collection').classList.remove('active');
+                document.getElementById('time-selection').classList.add('active');
+            });
+            
+            // Validate email and name fields on input
+            patientEmail.addEventListener('input', validateInfoForm);
+            patientName.addEventListener('input', validateInfoForm);
+            
+            function validateInfoForm() {
+                const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(patientEmail.value.trim());
+                const nameValid = patientName.value.trim().length > 0;
+                
+                infoNextBtn.disabled = !(emailValid && nameValid);
+            }
+            
+            infoNextBtn.addEventListener('click', function() {
+                // Validate form fields
+                if (patientEmail.value.trim() === '' || patientName.value.trim() === '') {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Update UI - mark step 3 as completed
+                document.getElementById('step-information').classList.remove('active');
+                document.getElementById('step-information').classList.add('completed');
+                document.getElementById('step-confirmation').classList.add('active');
+                
+                // Show confirmation step
+                document.getElementById('information-collection').classList.remove('active');
+                document.getElementById('booking-confirmation').classList.add('active');
+                
+                // Populate confirmation details
+                confirmDoctor.textContent = selectedDoctor.name;
+                confirmSpecialty.textContent = selectedDoctor.specialty;
+                confirmTime.textContent = selectedTimeSlot.formatted_time;
+                confirmEmail.textContent = patientEmail.value;
+            });
+            
+            confirmPrevBtn.addEventListener('click', function() {
+                // Go back to information collection
+                document.getElementById('step-confirmation').classList.remove('active');
+                document.getElementById('step-information').classList.remove('completed');
+                document.getElementById('step-information').classList.add('active');
+                
+                document.getElementById('booking-confirmation').classList.remove('active');
+                document.getElementById('information-collection').classList.add('active');
+            });
+            
+            confirmBookingBtn.addEventListener('click', function() {
+                // Disable button to prevent double booking
+                confirmBookingBtn.disabled = true;
+                confirmBookingBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Confirming...';
+                
+                // Prepare booking data
+                const bookingData = {
+                    doctor_id: selectedDoctor.id,
+                    doctor_name: selectedDoctor.name,
+                    slot_id: selectedTimeSlot.formatted_time,
+                    email: patientEmail.value,
+                    name: patientName.value,
+                    phone: patientPhone.value,
+                    notes: patientNotes.value,
+                    specialists: currentSpecialists
+                };
+                
+                // Send booking request
+                fetch('/book-appointment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(bookingData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reset button state
+                    confirmBookingBtn.disabled = false;
+                    confirmBookingBtn.innerHTML = 'Confirm Appointment <i class="fas fa-check ms-2"></i>';
+                    
+                    if (data.status === 'success') {
+                        // Show success message
+                        document.getElementById('booking-confirmation').classList.remove('active');
+                        document.getElementById('booking-success').classList.add('active');
+                        
+                        // Populate success details
+                        successDoctor.textContent = selectedDoctor.name;
+                        successTime.textContent = selectedTimeSlot.formatted_time;
+                        successLink.textContent = data.appointment.google_meet_link;
+                        successLink.href = data.appointment.google_meet_link;
+                        
+                        // Mark the slot as booked
+                        selectedTimeSlot.is_booked = true;
+                    } else {
+                        alert(`Booking failed: ${data.message}`);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error booking appointment:', error);
+                    confirmBookingBtn.disabled = false;
+                    confirmBookingBtn.innerHTML = 'Confirm Appointment <i class="fas fa-check ms-2"></i>';
+                    alert('An error occurred while booking your appointment. Please try again.');
+                });
+            });
+            
+            newQueryBtn.addEventListener('click', function() {
+                // Reset query and booking interface
+                queryText.value = '';
+                resetBookingInterface();
+                bookingContainer.style.display = 'none';
+                
+                queryResponse.innerHTML = `
+                    <div class="placeholder-text">
+                        <i class="fas fa-comment-medical"></i>
+                        <p>Ask any medical question to receive AI-generated insights.</p>
+                    </div>
+                `;
+                
+                queryMetadata.textContent = 'Ready to assist with your medical questions';
+                queryTime.textContent = '';
+                detectedCategory.innerHTML = '';
+            });
+            
+            // Refresh embeddings handler
+            const refreshEmbeddingsBtn = document.getElementById('refresh-embeddings');
+            
+            refreshEmbeddingsBtn.addEventListener('click', function() {
+                if (!systemInitialized) {
+                    alert('System is still initializing. Please wait a moment and try again.');
+                    return;
+                }
+                
+                // If no agent has been detected yet, default to clinical
+                const categoryToRefresh = lastDetectedAgent || 'clinical';
+                
+                if (!confirm(`Refresh knowledge base for ${categoryToRefresh} category? This may take a moment.`)) {
+                    return;
+                }
+                
+                // Update UI to show loading state
+                refreshEmbeddingsBtn.disabled = true;
+                const originalBtnText = refreshEmbeddingsBtn.innerHTML;
+                refreshEmbeddingsBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Refreshing...';
+                
+                queryResponse.innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <div class="mt-3">Refreshing knowledge base...</div>
+                        <div class="text-muted small mt-2">This process may take a minute or two</div>
+                    </div>
+                `;
+                
+                // Send refresh request to server
+                fetch('/refresh-embeddings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        category: categoryToRefresh
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reset button state
+                    refreshEmbeddingsBtn.disabled = false;
+                    refreshEmbeddingsBtn.innerHTML = originalBtnText;
+                    
+                    if (data.status === 'success') {
+                        queryResponse.innerHTML = `
+                            <div class="alert alert-success">
+                                <i class="fas fa-check-circle me-2"></i>
+                                ${data.message}
+                            </div>
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Processed ${data.embedding_count || 'multiple'} records in ${data.processing_time || 'some time'}.
+                            </div>
+                        `;
+                    } else {
+                        queryResponse.innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                ${data.message || 'An error occurred while refreshing the knowledge base.'}
+                            </div>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error refreshing embeddings:', error);
+                    queryResponse.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-wifi-slash me-2"></i>
+                            Network error: Unable to connect to the server.
+                        </div>
+                    `;
+                    
+                    // Reset button state
+                    refreshEmbeddingsBtn.disabled = false;
+                    refreshEmbeddingsBtn.innerHTML = originalBtnText;
+                });
+            });
+            
+            // ===== IMAGE HANDLING =====
+            const imageUpload = document.getElementById('image-upload');
+            const imagePreviewContainer = document.getElementById('image-preview-container');
+            const imagePreview = document.getElementById('image-preview');
+            const imageFilename = document.getElementById('image-filename');
+            const removeImageBtn = document.getElementById('remove-image');
+            const dropzone = document.getElementById('dropzone');
+            const imagePrompt = document.getElementById('image-prompt');
+            const analyzeImageBtn = document.getElementById('analyze-image');
+            const imageResponse = document.getElementById('image-response');
+            const imageMetadata = document.getElementById('image-metadata');
+            const imageTime = document.getElementById('image-time');
+            
+            // Set up file upload
+            imageUpload.addEventListener('change', function(e) {
+                handleImageSelection(e.target.files);
+            });
+            
+            // Set up drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                dropzone.classList.add('active');
+            }
+            
+            function unhighlight() {
+                dropzone.classList.remove('active');
+            }
+            
+            dropzone.addEventListener('drop', function(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleImageSelection(files);
+            });
+            
+            // Remove image handler
+            removeImageBtn.addEventListener('click', function() {
+                imageUpload.value = '';
+                imagePreviewContainer.style.display = 'none';
+                imageMetadata.textContent = 'Upload an image to begin';
+            });
+            
+            function handleImageSelection(files) {
+                if (files && files[0]) {
+                    const file = files[0];
+                    
+                    // Check if the file is an image
+                    if (!file.type.match('image.*')) {
+                        alert('Please upload an image file.');
+                        return;
+                    }
+                    
+                    // Display file info
+                    imageFilename.textContent = file.name;
+                    
+                    // Create preview
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        imagePreview.src = e.target.result;
+                        imagePreviewContainer.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                    
+                    imageMetadata.textContent = `Selected: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+                }
+            }
+            
+            // Analyze image handler
+            analyzeImageBtn.addEventListener('click', function() {
+                if (!systemInitialized) {
+                    alert('System is still initializing. Please wait a moment and try again.');
+                    return;
+                }
+                
+                if (!imageUpload.files || !imageUpload.files[0]) {
+                    imageResponse.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Please upload an image first.
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const prompt = imagePrompt.value.trim();
+                if (!prompt) {
+                    imageResponse.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Please provide analysis instructions.
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Update UI to show loading state
+                analyzeImageBtn.disabled = true;
+                analyzeImageBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Analyzing...';
+                
+                imageResponse.innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <div class="mt-3">Analyzing your medical image...</div>
+                        <div class="text-muted small mt-2">This may take up to a minute</div>
+                    </div>
+                `;
+                
+                imageMetadata.textContent = 'Processing image...';
+                imageTime.textContent = '';
+                
+                // Create form data
+                const formData = new FormData();
+                formData.append('image', imageUpload.files[0]);
+                formData.append('prompt', prompt);
+                
+                // Send to server
+                fetch('/analyze-image', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reset button state
+                    analyzeImageBtn.disabled = false;
+                    analyzeImageBtn.innerHTML = '<i class="fas fa-microscope"></i><span>Analyze Image</span>';
+                    
+                    if (data.status === 'success') {
+                        imageResponse.innerHTML = data.response;
+                        imageTime.textContent = data.processing_time || '';
+                        imageMetadata.textContent = 'Analysis completed';
+                    } else {
+                        imageResponse.innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                ${data.response || 'An error occurred while analyzing your image.'}
+                            </div>
+                        `;
+                        imageMetadata.textContent = 'Error analyzing image';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error analyzing image:', error);
+                    imageResponse.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-wifi-slash me-2"></i>
+                            Network error: Unable to connect to the server.
+                        </div>
+                    `;
+                    
+                    // Reset button state
+                    analyzeImageBtn.disabled = false;
+                    analyzeImageBtn.innerHTML = '<i class="fas fa-microscope"></i><span>Analyze Image</span>';
+                    imageMetadata.textContent = 'Connection error';
+                });
+            });
+            
+            // ===== DIET PLAN HANDLING =====
+            const dietForm = {
+                age: document.getElementById('diet-age'),
+                gender: document.getElementById('diet-gender'),
+                height: document.getElementById('diet-height'),
+                weight: document.getElementById('diet-weight'),
+                goal: document.getElementById('diet-goal'),
+                activity: document.getElementById('diet-activity'),
+                preferences: document.getElementById('diet-preferences'),
+                conditions: document.getElementById('diet-conditions'),
+                allergies: document.getElementById('diet-allergies'),
+                supplements: document.getElementById('diet-supplements')
+            };
+            
+            const generateDietBtn = document.getElementById('generate-diet');
+            const dietResponse = document.getElementById('diet-response');
+            const dietMetadata = document.getElementById('diet-metadata');
+            const dietTime = document.getElementById('diet-time');
+            
+            generateDietBtn.addEventListener('click', function() {
+                if (!systemInitialized) {
+                    alert('System is still initializing. Please wait a moment and try again.');
+                    return;
+                }
+                
+                // Validate required fields
+                const requiredFields = ['age', 'gender', 'height', 'weight', 'goal'];
+                const missingFields = [];
+                
+                for (const field of requiredFields) {
+                    if (!dietForm[field].value) {
+                        missingFields.push(field);
+                        dietForm[field].classList.add('is-invalid');
+                    } else {
+                        dietForm[field].classList.remove('is-invalid');
+                    }
+                }
+                
+                if (missingFields.length > 0) {
+                    dietResponse.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Please fill in all required fields: ${missingFields.join(', ')}.
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Update UI to show loading state
+                generateDietBtn.disabled = true;
+                generateDietBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Generating...';
+                
+                dietResponse.innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <div class="mt-3">Creating your personalized diet plan...</div>
+                        <div class="text-muted small mt-2">This may take a minute</div>
+                    </div>
+                `;
+                
+                dietMetadata.textContent = 'Processing request...';
+                dietTime.textContent = '';
+                
+                // Prepare data for submission
+                const userData = {
+                    age: dietForm.age.value,
+                    gender: dietForm.gender.value,
+                    height: dietForm.height.value,
+                    weight: dietForm.weight.value,
+                    health_goal: dietForm.goal.value,
+                    activity_level: dietForm.activity.value,
+                    dietary_preferences: dietForm.preferences.value,
+                    medical_conditions: dietForm.conditions.value,
+                    allergies: dietForm.allergies.value,
+                    supplements: dietForm.supplements.value
+                };
+                
+                // Send to server
+                fetch('/diet-plan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reset button state
+                    generateDietBtn.disabled = false;
+                    generateDietBtn.innerHTML = '<i class="fas fa-utensils"></i><span>Generate Diet Plan</span>';
+                    
+                    if (data.status === 'success') {
+                        dietResponse.innerHTML = data.response;
+                        dietTime.textContent = data.processing_time || '';
+                        dietMetadata.textContent = 'Diet plan generated successfully';
+                    } else {
+                        dietResponse.innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                ${data.response || 'An error occurred while generating your diet plan.'}
+                            </div>
+                        `;
+                        dietMetadata.textContent = 'Error generating diet plan';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error generating diet plan:', error);
+                    dietResponse.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-wifi-slash me-2"></i>
+                            Network error: Unable to connect to the server.
+                        </div>
+                    `;
+                    
+                    // Reset button state
+                    generateDietBtn.disabled = false;
+                    generateDietBtn.innerHTML = '<i class="fas fa-utensils"></i><span>Generate Diet Plan</span>';
+                    dietMetadata.textContent = 'Connection error';
+                });
+            });
+            
+            // Enable keyboard shortcut (Ctrl+Enter) to submit queries
+            queryText.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    submitQueryBtn.click();
+                }
+            });
+            
+            imagePrompt.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    analyzeImageBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

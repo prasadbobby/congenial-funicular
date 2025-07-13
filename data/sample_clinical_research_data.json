@@ -1,0 +1,195 @@
+{
+  "clinical_research_data": {
+    "literature_search_results": [
+      {
+        "title": "FOLFIRINOX versus Gemcitabine for Metastatic Pancreatic Cancer",
+        "authors": ["Conroy T", "Desseigne F", "Ychou M", "et al."],
+        "journal": "New England Journal of Medicine",
+        "year": 2011,
+        "pmid": "21561347",
+        "doi": "10.1056/NEJMoa1011923",
+        "study_type": "Randomized Controlled Trial",
+        "patient_population": "Metastatic pancreatic adenocarcinoma",
+        "intervention": "FOLFIRINOX vs Gemcitabine",
+        "primary_endpoint": "Overall survival",
+        "key_findings": [
+          "Median OS: 11.1 vs 6.8 months (HR 0.57, p<0.001)",
+          "Median PFS: 6.4 vs 3.3 months (HR 0.47, p<0.001)",
+          "Response rate: 31.6% vs 9.4% (p<0.001)",
+          "Higher toxicity with FOLFIRINOX"
+        ],
+        "relevance_score": 0.95,
+        "evidence_level": "1A"
+      },
+      {
+        "title": "Nab-Paclitaxel plus Gemcitabine for Metastatic Pancreatic Adenocarcinoma",
+        "authors": ["Von Hoff DD", "Ervin T", "Arena FP", "et al."],
+        "journal": "New England Journal of Medicine",
+        "year": 2013,
+        "pmid": "24094212",
+        "doi": "10.1056/NEJMoa1304369",
+        "study_type": "Randomized Controlled Trial",
+        "patient_population": "Metastatic pancreatic adenocarcinoma",
+        "intervention": "Nab-paclitaxel + Gemcitabine vs Gemcitabine",
+        "primary_endpoint": "Overall survival",
+        "key_findings": [
+          "Median OS: 8.5 vs 6.7 months (HR 0.72, p<0.001)",
+          "1-year survival: 35% vs 22%",
+          "Response rate: 23% vs 7% (p<0.001)",
+          "Manageable toxicity profile"
+        ],
+        "relevance_score": 0.92,
+        "evidence_level": "1A"
+      },
+      {
+        "title": "KRAS G12C Inhibitor AMG 510 in Advanced Solid Tumors",
+        "authors": ["Hong DS", "Fakih MG", "Strickler JH", "et al."],
+        "journal": "New England Journal of Medicine",
+        "year": 2020,
+        "pmid": "32955176",
+        "doi": "10.1056/NEJMoa2002787",
+        "study_type": "Phase I/II Trial",
+        "patient_population": "KRAS G12C-mutant solid tumors",
+        "intervention": "AMG 510 (Sotorasib)",
+        "primary_endpoint": "Safety and efficacy",
+        "key_findings": [
+          "Overall response rate: 32.2% in NSCLC",
+          "Disease control rate: 88.1%",
+          "Median duration of response: 11.1 months",
+          "Generally well tolerated"
+        ],
+        "relevance_score": 0.78,
+        "evidence_level": "2A",
+        "notes": "Limited data for pancreatic cancer with KRAS G12D"
+      }
+    ],
+    "treatment_guidelines": [
+      {
+        "organization": "NCCN",
+        "guideline": "Pancreatic Adenocarcinoma",
+        "version": "2025.1",
+        "recommendations": [
+          {
+            "category": "First-line metastatic",
+            "performance_status": "ECOG 0-1",
+            "regimens": [
+              "FOLFIRINOX (preferred)",
+              "Gemcitabine + nab-paclitaxel",
+              "Gemcitabine monotherapy (if not candidate for combination)"
+            ]
+          },
+          {
+            "category": "Second-line metastatic",
+            "prior_therapy": "Gemcitabine-based",
+            "regimens": [
+              "5-FU + liposomal irinotecan + leucovorin",
+              "5-FU + oxaliplatin"
+            ]
+          }
+        ]
+      },
+      {
+        "organization": "ESMO",
+        "guideline": "Pancreatic Cancer Clinical Practice Guidelines",
+        "version": "2024",
+        "recommendations": [
+          {
+            "category": "Systemic therapy",
+            "evidence": "Grade A",
+            "recommendation": "FOLFIRINOX or gemcitabine + nab-paclitaxel for fit patients"
+          },
+          {
+            "category": "Biomarker testing",
+            "evidence": "Grade B",
+            "recommendation": "Test for BRCA1/2, MSI, and homologous recombination deficiency"
+          }
+        ]
+      }
+    ],
+    "prognostic_factors": [
+      {
+        "factor": "Performance Status",
+        "description": "ECOG 0-1 vs 2+",
+        "hazard_ratio": 1.8,
+        "confidence_interval": "1.4-2.3",
+        "p_value": "<0.001"
+      },
+      {
+        "factor": "CA 19-9 level",
+        "description": ">1000 vs <100 U/mL",
+        "hazard_ratio": 2.1,
+        "confidence_interval": "1.6-2.7",
+        "p_value": "<0.001"
+      },
+      {
+        "factor": "Number of metastatic sites",
+        "description": "≥3 vs 1-2 sites",
+        "hazard_ratio": 1.6,
+        "confidence_interval": "1.2-2.1",
+        "p_value": "0.002"
+      }
+    ]
+  },
+  "clinical_trials_matching": [
+    {
+      "nct_id": "NCT04185883",
+      "title": "KRAS G12C Inhibitor in Advanced Solid Tumors",
+      "phase": "Phase II",
+      "status": "Recruiting",
+      "location": "Multiple centers",
+      "eligibility_criteria": [
+        "KRAS G12C mutation confirmed",
+        "Advanced solid tumor",
+        "ECOG PS 0-1",
+        "Adequate organ function"
+      ],
+      "primary_endpoint": "Overall response rate",
+      "estimated_enrollment": 300,
+      "match_score": 0.65,
+      "exclusion_reason": "Patient has KRAS G12D, not G12C"
+    },
+    {
+      "nct_id": "NCT03768414",
+      "title": "Pancreatic Cancer Precision Medicine Trial",
+      "phase": "Phase II",
+      "status": "Recruiting",
+      "location": "Johns Hopkins, Mayo Clinic, MSKCC",
+      "eligibility_criteria": [
+        "Metastatic pancreatic adenocarcinoma",
+        "Molecular profiling completed",
+        "Prior systemic therapy allowed",
+        "ECOG PS 0-2"
+      ],
+      "primary_endpoint": "Progression-free survival",
+      "estimated_enrollment": 200,
+      "match_score": 0.89,
+      "match_criteria": [
+        "Disease type: Perfect match",
+        "Stage: Perfect match",
+        "Prior therapy: Eligible",
+        "Performance status: Eligible"
+      ]
+    },
+    {
+      "nct_id": "NCT04390763",
+      "title": "Immunotherapy Combination in Pancreatic Cancer",
+      "phase": "Phase I/II",
+      "status": "Active, not recruiting",
+      "location": "University of California centers",
+      "eligibility_criteria": [
+        "Pancreatic adenocarcinoma",
+        "Measurable disease",
+        "No active autoimmune disease",
+        "ECOG PS 0-1"
+      ],
+      "primary_endpoint": "Safety and tolerability",
+      "estimated_enrollment": 150,
+      "match_score": 0.72,
+      "match_criteria": [
+        "Disease type: Perfect match",
+        "Measurable disease: Yes",
+        "Performance status: Eligible"
+      ]
+    }
+  ]
+}

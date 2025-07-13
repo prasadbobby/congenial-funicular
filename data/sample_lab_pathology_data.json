@@ -1,0 +1,188 @@
+{
+  "laboratory_results": [
+    {
+      "test_date": "2025-01-10",
+      "test_category": "Complete Blood Count",
+      "results": [
+        {
+          "parameter": "Hemoglobin",
+          "value": 9.8,
+          "unit": "g/dL",
+          "reference_range": "12.0-15.5",
+          "status": "Low",
+          "critical": true
+        },
+        {
+          "parameter": "Hematocrit",
+          "value": 29.5,
+          "unit": "%",
+          "reference_range": "36.0-46.0",
+          "status": "Low",
+          "critical": false
+        },
+        {
+          "parameter": "White Blood Cells",
+          "value": 12.8,
+          "unit": "K/uL",
+          "reference_range": "4.5-11.0",
+          "status": "High",
+          "critical": false
+        },
+        {
+          "parameter": "Platelets",
+          "value": 585,
+          "unit": "K/uL",
+          "reference_range": "150-450",
+          "status": "High",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "test_date": "2025-01-10",
+      "test_category": "Comprehensive Metabolic Panel",
+      "results": [
+        {
+          "parameter": "Glucose",
+          "value": 145,
+          "unit": "mg/dL",
+          "reference_range": "70-100",
+          "status": "High",
+          "critical": false
+        },
+        {
+          "parameter": "Creatinine",
+          "value": 0.9,
+          "unit": "mg/dL",
+          "reference_range": "0.6-1.2",
+          "status": "Normal",
+          "critical": false
+        },
+        {
+          "parameter": "ALT",
+          "value": 78,
+          "unit": "U/L",
+          "reference_range": "7-35",
+          "status": "High",
+          "critical": false
+        },
+        {
+          "parameter": "AST",
+          "value": 92,
+          "unit": "U/L",
+          "reference_range": "8-40",
+          "status": "High",
+          "critical": false
+        },
+        {
+          "parameter": "Bilirubin Total",
+          "value": 2.8,
+          "unit": "mg/dL",
+          "reference_range": "0.3-1.2",
+          "status": "High",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "test_date": "2025-01-12",
+      "test_category": "Tumor Markers",
+      "results": [
+        {
+          "parameter": "CA 19-9",
+          "value": 189,
+          "unit": "U/mL",
+          "reference_range": "<37",
+          "status": "High",
+          "critical": true
+        },
+        {
+          "parameter": "CEA",
+          "value": 8.7,
+          "unit": "ng/mL",
+          "reference_range": "<3.0",
+          "status": "High",
+          "critical": false
+        },
+        {
+          "parameter": "AFP",
+          "value": 12,
+          "unit": "ng/mL",
+          "reference_range": "<10",
+          "status": "Slightly High",
+          "critical": false
+        }
+      ]
+    },
+    {
+      "test_date": "2025-01-15",
+      "test_category": "Coagulation Studies",
+      "results": [
+        {
+          "parameter": "PT",
+          "value": 14.2,
+          "unit": "seconds",
+          "reference_range": "11.0-13.0",
+          "status": "High",
+          "critical": false
+        },
+        {
+          "parameter": "INR",
+          "value": 1.3,
+          "unit": "ratio",
+          "reference_range": "0.8-1.2",
+          "status": "High",
+          "critical": false
+        },
+        {
+          "parameter": "aPTT",
+          "value": 32,
+          "unit": "seconds",
+          "reference_range": "25-35",
+          "status": "Normal",
+          "critical": false
+        }
+      ]
+    }
+  ],
+  "pathology_reports": [
+    {
+      "report_date": "2025-01-18",
+      "specimen_type": "Liver biopsy",
+      "procedure": "Ultrasound-guided core needle biopsy",
+      "gross_description": "Two cores of tan-brown tissue measuring 1.5 cm in aggregate length",
+      "microscopic_findings": [
+        "Moderately differentiated adenocarcinoma",
+        "Tumor cells arranged in glandular pattern",
+        "Nuclear pleomorphism and mitotic activity present",
+        "Desmoplastic stroma surrounding tumor nests",
+        "Focal lymphovascular invasion identified"
+      ],
+      "immunohistochemistry": [
+        {
+          "marker": "CK7",
+          "result": "Positive",
+          "intensity": "Strong"
+        },
+        {
+          "marker": "CK20",
+          "result": "Negative",
+          "intensity": "None"
+        },
+        {
+          "marker": "TTF-1",
+          "result": "Negative",
+          "intensity": "None"
+        },
+        {
+          "marker": "CA 19-9",
+          "result": "Positive",
+          "intensity": "Moderate"
+        }
+      ],
+      "diagnosis": "Metastatic adenocarcinoma, consistent with pancreaticobiliary origin",
+      "grade": "Grade 2 (Moderately differentiated)",
+      "staging_notes": "Further staging required"
+    }
+  ]
+}

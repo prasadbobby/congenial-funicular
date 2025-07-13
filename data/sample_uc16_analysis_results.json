@@ -1,0 +1,273 @@
+{
+  "uc16_analysis_results": {
+    "case_summary": {
+      "case_id": "UC16-2025-001",
+      "analysis_date": "2025-01-20",
+      "patient_id": "PAT-2025-001",
+      "primary_diagnosis": "Metastatic Pancreatic Adenocarcinoma",
+      "stage": "T3N1M1 (Stage IV)",
+      "confidence_score": 0.92
+    },
+    "agent_contributions": {
+      "radiology_agent": {
+        "confidence": 0.94,
+        "processing_time_seconds": 45.2,
+        "key_findings": [
+          "Primary pancreatic head mass (3.4 x 3.0 cm)",
+          "Multiple hepatic metastases (largest 2.3 cm)",
+          "Superior mesenteric vein involvement",
+          "Biliary ductal dilatation"
+        ],
+        "staging_contribution": {
+          "t_stage": "T3",
+          "n_stage": "N1",
+          "m_stage": "M1",
+          "resectability": "Unresectable"
+        },
+        "ai_insights": {
+          "tumor_volume": "15.2 cm³",
+          "heterogeneity_index": 0.78,
+          "vascular_involvement_probability": 0.91,
+          "metastases_count": 8
+        }
+      },
+      "pathology_agent": {
+        "confidence": 0.89,
+        "processing_time_seconds": 32.1,
+        "key_findings": [
+          "Moderately differentiated adenocarcinoma",
+          "Grade 2 tumor",
+          "CK7+/CK20- immunoprofile",
+          "Lymphovascular invasion present"
+        ],
+        "histological_type": "Ductal adenocarcinoma",
+        "grade": "Grade 2 (Moderately differentiated)",
+        "immunohistochemistry_panel": {
+          "ck7": "Positive (Strong)",
+          "ck20": "Negative",
+          "ttf1": "Negative",
+          "ca19_9": "Positive (Moderate)"
+        },
+        "molecular_markers": [
+          "Ki-67: 65% (High proliferation)",
+          "p53: Mutant pattern",
+          "SMAD4: Loss of expression"
+        ]
+      },
+      "genomics_agent": {
+        "confidence": 0.96,
+        "processing_time_seconds": 67.8,
+        "key_findings": [
+          "KRAS G12D mutation (42% VAF)",
+          "TP53 R273H mutation (38% VAF)",
+          "CDKN2A loss (nonsense mutation)",
+          "SMAD4 loss (nonsense mutation)"
+        ],
+        "mutation_signature": "Classic pancreatic cancer profile",
+        "therapeutic_targets": [
+          {
+            "target": "KRAS G12D",
+            "drugs": ["Investigational KRAS inhibitors"],
+            "evidence_level": "Preclinical"
+          },
+          {
+            "target": "Homologous recombination pathway",
+            "drugs": ["PARP inhibitors"],
+            "evidence_level": "Limited"
+          }
+        ],
+        "biomarkers": {
+          "msi_status": "MSS",
+          "tmb": "Low (3.2 mut/Mb)",
+          "hrd_score": "Negative (15)",
+          "pd_l1": "Low (5%)"
+        },
+        "pharmacogenomics": [
+          "UGT1A1*28/*28: Irinotecan dose reduction needed",
+          "TPMT normal: Standard dosing for 6-MP/azathioprine"
+        ]
+      },
+      "patient_history_agent": {
+        "confidence": 0.87,
+        "processing_time_seconds": 28.5,
+        "key_findings": [
+          "3-month symptom progression",
+          "Strong family history of cancer",
+          "Diabetes comorbidity",
+          "Former smoking history"
+        ],
+        "timeline_analysis": {
+          "symptom_onset": "October 2024",
+          "diagnosis_delay": "3 months",
+          "progression_rate": "Rapid",
+          "performance_decline": "Moderate"
+        },
+        "risk_factors": [
+          {
+            "factor": "Family history",
+            "impact": "High",
+            "details": "Sister with BRCA1, mother with breast cancer"
+          },
+          {
+            "factor": "Smoking history",
+            "impact": "Moderate",
+            "details": "15 pack-years, quit 2019"
+          },
+          {
+            "factor": "Diabetes",
+            "impact": "Moderate",
+            "details": "Type 2, diagnosed 2022"
+          }
+        ],
+        "comorbidity_impact": {
+          "diabetes": "May affect treatment tolerance",
+          "hypertension": "Well controlled, minimal impact"
+        }
+      },
+      "clinical_research_agent": {
+        "confidence": 0.91,
+        "processing_time_seconds": 52.3,
+        "key_findings": [
+          "Strong evidence for combination chemotherapy",
+          "FOLFIRINOX preferred for fit patients",
+          "Limited targeted therapy options",
+          "Poor prognosis markers present"
+        ],
+        "treatment_recommendations": [
+          {
+            "line": "First-line",
+            "regimen": "FOLFIRINOX",
+            "evidence_level": "1A",
+            "expected_response_rate": "31.6%",
+            "median_os": "11.1 months",
+            "considerations": "Good performance status required"
+          },
+          {
+            "line": "Alternative first-line",
+            "regimen": "Gemcitabine + nab-paclitaxel",
+            "evidence_level": "1A",
+            "expected_response_rate": "23%",
+            "median_os": "8.5 months",
+            "considerations": "Better tolerance profile"
+          },
+          {
+            "line": "Second-line",
+            "regimen": "5-FU + liposomal irinotecan",
+            "evidence_level": "1B",
+            "expected_response_rate": "16%",
+            "median_os": "6.2 months",
+            "considerations": "After gemcitabine failure"
+          }
+        ],
+        "prognostic_factors": [
+          {
+            "factor": "CA 19-9 level (189 U/mL)",
+            "impact": "Negative",
+            "hazard_ratio": 1.8
+          },
+          {
+            "factor": "Multiple metastatic sites",
+            "impact": "Negative",
+            "hazard_ratio": 1.6
+          },
+          {
+            "factor": "ECOG PS 1",
+            "impact": "Acceptable",
+            "hazard_ratio": 1.0
+          }
+        ]
+      },
+      "clinical_trials_agent": {
+        "confidence": 0.84,
+        "processing_time_seconds": 41.7,
+        "key_findings": [
+          "Limited targeted therapy trials available",
+          "Precision medicine trials appropriate",
+          "Immunotherapy combinations under investigation",
+          "Geographic access considerations"
+        ],
+        "trial_matches": [
+          {
+            "trial_id": "NCT03768414",
+            "title": "Pancreatic Cancer Precision Medicine Trial",
+            "match_score": 0.89,
+            "phase": "Phase II",
+            "status": "Recruiting",
+            "primary_endpoint": "Progression-free survival",
+            "eligibility": "Excellent match",
+            "location_access": "Johns Hopkins (150 miles)"
+          },
+          {
+            "trial_id": "NCT04390763",
+            "title": "Immunotherapy Combination Trial",
+            "match_score": 0.72,
+            "phase": "Phase I/II",
+            "status": "Active, not recruiting",
+            "primary_endpoint": "Safety and tolerability",
+            "eligibility": "Good match",
+            "location_access": "UC San Francisco (300 miles)"
+          }
+        ],
+        "recommendations": [
+          "Consider precision medicine trial enrollment",
+          "Standard of care remains appropriate",
+          "Monitor for new KRAS-targeted trials",
+          "Consider referral to academic center"
+        ]
+      }
+    },
+    "integrated_assessment": {
+      "diagnostic_certainty": 0.92,
+      "staging_accuracy": 0.94,
+      "treatment_complexity": "High",
+      "prognosis": {
+        "category": "Poor",
+        "estimated_survival_months": "8-12",
+        "confidence": 0.88,
+        "factors": [
+          "Metastatic disease",
+          "Multiple poor prognostic markers",
+          "Limited targeted options"
+        ]
+      },
+      "multidisciplinary_recommendations": [
+        {
+          "specialty": "Medical Oncology",
+          "action": "Initiate systemic chemotherapy",
+          "urgency": "Within 1-2 weeks",
+          "details": "FOLFIRINOX vs Gem/nab-paclitaxel based on PS"
+        },
+        {
+          "specialty": "Interventional Radiology",
+          "action": "Consider biliary stenting",
+          "urgency": "If symptomatic obstruction",
+          "details": "Monitor bilirubin levels"
+        },
+        {
+          "specialty": "Palliative Care",
+          "action": "Early integration",
+          "urgency": "Within 2-4 weeks",
+          "details": "Symptom management and goals of care"
+        },
+        {
+          "specialty": "Genetic Counseling",
+          "action": "Family history evaluation",
+          "urgency": "Non-urgent",
+          "details": "BRCA testing given family history"
+        }
+      ]
+    },
+    "quality_metrics": {
+      "total_processing_time_seconds": 267.6,
+      "agent_consensus_score": 0.89,
+      "data_completeness": 0.93,
+      "confidence_distribution": {
+        "high_confidence": 5,
+        "moderate_confidence": 1,
+        "low_confidence": 0
+      },
+      "evidence_quality": "High",
+      "recommendation_strength": "Strong"
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "imaging_studies": [
+    {
+      "study_date": "2025-01-08",
+      "modality": "CT",
+      "body_part": "Abdomen/Pelvis",
+      "contrast": "IV contrast",
+      "technique": "Helical CT with 5mm slice thickness",
+      "dicom_metadata": {
+        "study_instance_uid": "1.2.826.0.1.3680043.8.1055.1.20250108.123456",
+        "series_instance_uid": "1.2.826.0.1.3680043.8.1055.2.20250108.123456",
+        "modality": "CT",
+        "manufacturer": "Siemens",
+        "model": "SOMATOM Definition AS+",
+        "slice_thickness": 5.0,
+        "pixel_spacing": [0.75, 0.75],
+        "image_orientation": [1, 0, 0, 0, 1, 0],
+        "rows": 512,
+        "columns": 512,
+        "bits_allocated": 16,
+        "acquisition_date": "20250108",
+        "acquisition_time": "143022"
+      },
+      "findings": [
+        {
+          "organ": "Pancreas",
+          "finding": "Hypoattenuating mass in pancreatic head",
+          "size": "3.2 x 2.8 cm",
+          "characteristics": [
+            "Irregular margins",
+            "Heterogeneous enhancement",
+            "Upstream pancreatic ductal dilatation"
+          ],
+          "suspicion_level": "High"
+        },
+        {
+          "organ": "Liver",
+          "finding": "Multiple hypodense lesions",
+          "size": "Largest 2.1 cm in segment VIII",
+          "characteristics": [
+            "Rim enhancement",
+            "Central hypoattenuation",
+            "Scattered throughout both lobes"
+          ],
+          "suspicion_level": "High"
+        },
+        {
+          "organ": "Common bile duct",
+          "finding": "Mild dilatation",
+          "size": "8 mm diameter",
+          "characteristics": [
+            "Smooth wall contour",
+            "No filling defects"
+          ],
+          "suspicion_level": "Moderate"
+        }
+      ],
+      "impression": "Pancreatic head mass with features suggestive of malignancy and multiple hepatic metastases",
+      "recommendations": [
+        "Tissue sampling for definitive diagnosis",
+        "Staging workup including chest CT",
+        "Multidisciplinary oncology consultation"
+      ]
+    },
+    {
+      "study_date": "2025-01-12",
+      "modality": "MRI",
+      "body_part": "Abdomen",
+      "contrast": "Gadolinium",
+      "technique": "MRCP with T1, T2, and DWI sequences",
+      "dicom_metadata": {
+        "study_instance_uid": "1.2.826.0.1.3680043.8.1055.3.20250112.789012",
+        "series_instance_uid": "1.2.826.0.1.3680043.8.1055.4.20250112.789012",
+        "modality": "MR",
+        "manufacturer": "GE Healthcare",
+        "model": "SIGNA Pioneer",
+        "slice_thickness": 3.0,
+        "pixel_spacing": [0.5, 0.5],
+        "magnetic_field_strength": 3.0,
+        "rows": 320,
+        "columns": 320,
+        "acquisition_date": "20250112",
+        "acquisition_time": "091545"
+      },
+      "findings": [
+        {
+          "organ": "Pancreas",
+          "finding": "T2 hyperintense mass",
+          "size": "3.4 x 3.0 cm",
+          "characteristics": [
+            "Restricted diffusion on DWI",
+            "Heterogeneous enhancement",
+            "Invasion of superior mesenteric vein"
+          ],
+          "suspicion_level": "High"
+        },
+        {
+          "organ": "Liver",
+          "finding": "Multiple T2 hyperintense lesions",
+          "size": "Up to 2.3 cm",
+          "characteristics": [
+            "Restricted diffusion",
+            "Ring enhancement pattern",
+            "Consistent with metastases"
+          ],
+          "suspicion_level": "High"
+        }
+      ],
+      "impression": "Pancreatic adenocarcinoma with hepatic metastases and vascular involvement",
+      "recommendations": [
+        "Unresectable disease",
+        "Palliative chemotherapy evaluation",
+        "Biliary stenting consideration"
+      ]
+    }
+  ],
+  "radiology_ai_analysis": {
+    "lesion_detection": {
+      "primary_tumor": {
+        "location": "Pancreatic head",
+        "confidence": 0.94,
+        "volume_cm3": 15.2,
+        "vascularity_score": 0.73,
+        "necrosis_percentage": 12
+      },
+      "metastases": [
+        {
+          "location": "Liver segment VIII",
+          "confidence": 0.89,
+          "volume_cm3": 4.8
+        },
+        {
+          "location": "Liver segment IV",
+          "confidence": 0.85,
+          "volume_cm3": 2.1
+        },
+        {
+          "location": "Liver segment VI",
+          "confidence": 0.82,
+          "volume_cm3": 1.7
+        }
+      ]
+    },
+    "texture_analysis": {
+      "heterogeneity_index": 0.78,
+      "entropy": 4.23,
+      "contrast": 892.1,
+      "correlation": 0.45
+    },
+    "staging_assessment": {
+      "t_stage": "T3",
+      "n_stage": "N1",
+      "m_stage": "M1",
+      "overall_stage": "IV",
+      "confidence": 0.91
+    }
+  }
+}

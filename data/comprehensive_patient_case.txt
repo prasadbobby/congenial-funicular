@@ -1,0 +1,147 @@
+COMPREHENSIVE PATIENT CASE - MEDICAL RECORD
+===========================================
+
+CASE IDENTIFICATION
+==================
+Patient ID: PAT-2025-001
+Case ID: MED-2025-001
+Analysis Date: January 20, 2025
+Primary Diagnosis: Metastatic Pancreatic Adenocarcinoma (Stage IV)
+
+PATIENT DEMOGRAPHICS & BACKGROUND
+=================================
+Name: Sarah Johnson
+Age: 45 years old
+Gender: Female
+Ethnicity: Caucasian
+BMI: 25.0 (Normal weight)
+Blood Type: A+
+Medical Record Number: MR123456
+Primary Physician: Dr. Michael Chen
+Department: Oncology
+Admission Date: January 18, 2025
+Insurance: Premium Health Plan
+
+ALLERGIES: Penicillin, Shellfish
+
+CHIEF COMPLAINT
+===============
+"Persistent abdominal pain and extreme fatigue for the past 3 months"
+
+PRESENTING SYMPTOMS (Severity Scale 1-10)
+=========================================
+1. Abdominal Pain (Severity: 7/10)
+   - Duration: 12 weeks
+   - Location: Upper right quadrant
+   - Character: Intermittent sharp pain
+   - Impact: Interfering with daily activities
+
+2. Extreme Fatigue (Severity: 8/10)
+   - Duration: 10 weeks
+   - Impact: Affecting work performance and daily life
+   - Associated with decreased appetite
+
+3. Unintentional Weight Loss (Severity: 6/10)
+   - Duration: 8 weeks
+   - Amount: 5 kg (11 lbs)
+   - Patient reports clothes fitting loosely
+
+4. Night Sweats (Severity: 5/10)
+   - Duration: 6 weeks
+   - Frequency: 4-5 nights per week
+   - Requires changing clothes/bedding
+
+MEDICAL HISTORY
+===============
+1. Hypertension (2020-present)
+   - Well controlled on Lisinopril 10mg daily
+   - No complications
+
+2. Type 2 Diabetes Mellitus (2022-present)
+   - Managed with Metformin 500mg twice daily
+   - HbA1c levels stable around 7.2%
+
+3. Appendectomy (2018)
+   - Uncomplicated laparoscopic procedure
+   - Complete recovery
+
+FAMILY HISTORY (High Risk Profile)
+==================================
+Maternal Side:
+- Mother: Breast cancer at age 52, deceased at 72
+- Mother: Osteoporosis at age 65
+- Maternal grandmother: Ovarian cancer (age unknown)
+
+Paternal Side:
+- Father: Coronary artery disease at age 58, still living at 78
+- Father: Type 2 diabetes at age 45
+- Paternal grandfather: Pancreatic cancer at age 67
+
+Siblings:
+- Sister (age 48): BRCA1 mutation carrier, prophylactic mastectomy performed
+
+SOCIAL HISTORY
+==============
+Smoking: Former smoker (15 pack-years, quit January 2019)
+Alcohol: Social drinker (3 drinks per week)
+Occupation: Marketing Executive (high-stress environment)
+Exercise: Moderate activity 3x per week (recently decreased due to fatigue)
+Diet: Typical American diet, some processed foods
+
+CURRENT MEDICATIONS
+==================
+1. Lisinopril 10mg daily (Hypertension)
+2. Metformin 500mg twice daily (Diabetes)
+3. Omeprazole 20mg daily (GERD symptoms)
+4. Multivitamin daily
+5. Ibuprofen 400mg as needed (Pain relief)
+
+VITAL SIGNS (Most Recent)
+========================
+Blood Pressure: 128/84 mmHg
+Heart Rate: 92 bpm
+Temperature: 98.6°F (37°C)
+Respiratory Rate: 18 breaths/min
+Oxygen Saturation: 98% on room air
+Weight: 62 kg (136.7 lbs)
+Height: 165 cm (5'5")
+
+PHYSICAL EXAMINATION FINDINGS
+============================
+General Appearance: Alert, appears mildly distressed due to pain
+HEENT: No lymphadenopathy, mild conjunctival pallor
+Cardiovascular: Regular rate and rhythm, no murmurs
+Respiratory: Clear to auscultation bilaterally
+Abdomen: Tender in RUQ, mild hepatomegaly palpated
+Extremities: No edema, good peripheral pulses
+Neurological: Alert and oriented x3, no focal deficits
+
+CLINICAL SUMMARY
+===============
+45-year-old female with significant family history of cancer presenting with a 3-month history of abdominal pain, fatigue, and unintentional weight loss. Laboratory findings reveal severe anemia, elevated liver enzymes, and critically elevated tumor markers. Imaging demonstrates a pancreatic head mass with multiple liver metastases. Pathology confirms metastatic adenocarcinoma consistent with pancreaticobiliary origin.
+
+TREATMENT PLAN
+=============
+1. Immediate oncology consultation for systemic chemotherapy
+2. Hematology evaluation for severe anemia management
+3. Palliative care consultation for symptom management
+4. Genetic counseling given strong family history
+5. Multidisciplinary tumor board review
+
+PROGNOSIS
+=========
+Stage IV pancreatic adenocarcinoma with liver metastases carries a poor prognosis. With aggressive treatment, median survival is typically 8-12 months. Patient's young age and good performance status may provide some survival advantage.
+
+FOLLOW-UP PLAN
+=============
+- Oncology consultation within 1 week
+- Begin systemic chemotherapy within 2 weeks
+- Restaging imaging in 8-12 weeks
+- Palliative care integration
+- Regular monitoring of tumor markers and liver function
+
+END OF MEDICAL RECORD
+=====================
+Report Generated: January 20, 2025
+Attending Physician: Dr. Michael Chen, MD
+Department: Medical Oncology

@@ -1,0 +1,99 @@
+{
+  "patient_demographics": {
+    "patient_id": "PAT-2025-001",
+    "age": 45,
+    "gender": "Female",
+    "ethnicity": "Caucasian",
+    "height_cm": 165,
+    "weight_kg": 68,
+    "bmi": 25.0,
+    "blood_type": "A+",
+    "allergies": ["Penicillin", "Shellfish"],
+    "emergency_contact": {
+      "name": "John Smith",
+      "relationship": "Spouse",
+      "phone": "+1-555-0123"
+    }
+  },
+  "chief_complaint": "Persistent abdominal pain and fatigue for 3 months",
+  "presenting_symptoms": [
+    {
+      "symptom": "Abdominal pain",
+      "severity": 7,
+      "duration_weeks": 12,
+      "description": "Intermittent sharp pain in upper right quadrant"
+    },
+    {
+      "symptom": "Fatigue",
+      "severity": 8,
+      "duration_weeks": 10,
+      "description": "Extreme tiredness affecting daily activities"
+    },
+    {
+      "symptom": "Weight loss",
+      "severity": 6,
+      "duration_weeks": 8,
+      "description": "Unintentional 5kg weight loss"
+    },
+    {
+      "symptom": "Night sweats",
+      "severity": 5,
+      "duration_weeks": 6,
+      "description": "Profuse sweating during sleep"
+    }
+  ],
+  "medical_history": [
+    {
+      "condition": "Hypertension",
+      "diagnosed_date": "2020-03-15",
+      "status": "Active",
+      "medications": ["Lisinopril 10mg daily"]
+    },
+    {
+      "condition": "Type 2 Diabetes",
+      "diagnosed_date": "2022-01-10",
+      "status": "Active",
+      "medications": ["Metformin 500mg twice daily"]
+    },
+    {
+      "condition": "Appendectomy",
+      "diagnosed_date": "2018-07-22",
+      "status": "Resolved",
+      "medications": []
+    }
+  ],
+  "family_history": [
+    {
+      "relation": "Mother",
+      "conditions": ["Breast cancer", "Osteoporosis"],
+      "age_at_diagnosis": [52, 65],
+      "current_status": "Deceased at 72"
+    },
+    {
+      "relation": "Father",
+      "conditions": ["Coronary artery disease", "Diabetes"],
+      "age_at_diagnosis": [58, 45],
+      "current_status": "Alive at 78"
+    },
+    {
+      "relation": "Sister",
+      "conditions": ["BRCA1 mutation"],
+      "age_at_diagnosis": [35],
+      "current_status": "Alive at 48"
+    }
+  ],
+  "social_history": {
+    "smoking": {
+      "status": "Former smoker",
+      "pack_years": 15,
+      "quit_date": "2019-01-01"
+    },
+    "alcohol": {
+      "status": "Occasional",
+      "drinks_per_week": 3
+    },
+    "occupation": "Marketing Executive",
+    "exercise": "Moderate - 3x per week",
+    "stress_level": "High"
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "genomic_analysis": {
+    "sample_info": {
+      "sample_id": "GEN-2025-001",
+      "sample_type": "Tumor tissue",
+      "collection_date": "2025-01-18",
+      "sequencing_platform": "Illumina NovaSeq 6000",
+      "panel_type": "Comprehensive Cancer Panel",
+      "coverage_depth": "500x",
+      "quality_metrics": {
+        "q30_percentage": 94.2,
+        "total_reads": 45000000,
+        "uniformity": 0.89
+      }
+    },
+    "mutations": [
+      {
+        "gene": "KRAS",
+        "variant": "p.G12D",
+        "chromosome": "12",
+        "position": 25245350,
+        "ref_allele": "C",
+        "alt_allele": "A",
+        "variant_type": "Missense",
+        "allele_frequency": 0.42,
+        "read_depth": 523,
+        "clinical_significance": "Pathogenic",
+        "oncogene_status": "Driver mutation",
+        "therapeutic_implications": [
+          "Resistance to EGFR inhibitors",
+          "Potential MEK inhibitor sensitivity"
+        ]
+      },
+      {
+        "gene": "TP53",
+        "variant": "p.R273H",
+        "chromosome": "17",
+        "position": 7673803,
+        "ref_allele": "G",
+        "alt_allele": "A",
+        "variant_type": "Missense",
+        "allele_frequency": 0.38,
+        "read_depth": 445,
+        "clinical_significance": "Pathogenic",
+        "oncogene_status": "Tumor suppressor loss",
+        "therapeutic_implications": [
+          "Poor prognosis marker",
+          "Chemotherapy resistance"
+        ]
+      },
+      {
+        "gene": "CDKN2A",
+        "variant": "p.R58*",
+        "chromosome": "9",
+        "position": 21971207,
+        "ref_allele": "C",
+        "alt_allele": "T",
+        "variant_type": "Nonsense",
+        "allele_frequency": 0.45,
+        "read_depth": 398,
+        "clinical_significance": "Pathogenic",
+        "oncogene_status": "Tumor suppressor loss",
+        "therapeutic_implications": [
+          "CDK4/6 inhibitor potential",
+          "Cell cycle dysregulation"
+        ]
+      },
+      {
+        "gene": "SMAD4",
+        "variant": "p.Q249*",
+        "chromosome": "18",
+        "position": 51028631,
+        "ref_allele": "C",
+        "alt_allele": "T",
+        "variant_type": "Nonsense",
+        "allele_frequency": 0.41,
+        "read_depth": 412,
+        "clinical_significance": "Pathogenic",
+        "oncogene_status": "Tumor suppressor loss",
+        "therapeutic_implications": [
+          "TGF-β pathway disruption",
+          "Poor prognosis"
+        ]
+      }
+    ],
+    "copy_number_variants": [
+      {
+        "gene": "MYC",
+        "chromosome": "8",
+        "copy_number": 4.2,
+        "status": "Amplified",
+        "significance": "Oncogene amplification"
+      },
+      {
+        "gene": "CDKN2A",
+        "chromosome": "9",
+        "copy_number": 0.3,
+        "status": "Deleted",
+        "significance": "Tumor suppressor loss"
+      }
+    ],
+    "microsatellite_instability": {
+      "status": "MSS",
+      "msi_score": 0.12,
+      "markers_tested": ["BAT25", "BAT26", "D2S123", "D5S346", "D17S250"],
+      "interpretation": "Microsatellite stable"
+    },
+    "tumor_mutational_burden": {
+      "value": 3.2,
+      "unit": "mutations/Mb",
+      "classification": "Low",
+      "percentile": 25
+    },
+    "homologous_recombination_deficiency": {
+      "hrd_score": 15,
+      "status": "HRD-negative",
+      "loh_score": 8,
+      "tai_score": 4,
+      "lst_score": 3
+    },
+    "therapeutic_targets": [
+      {
+        "gene": "KRAS G12D",
+        "drug": "Sotorasib",
+        "evidence_level": "FDA Approved",
+        "indication": "KRAS G12C (not applicable)",
+        "notes": "G12D variant - investigational agents available"
+      },
+      {
+        "pathway": "MEK pathway",
+        "drug": "Trametinib",
+        "evidence_level": "Clinical Trial",
+        "indication": "KRAS-mutant pancreatic cancer",
+        "notes": "Combination therapy recommended"
+      }
+    ],
+    "biomarkers": {
+      "pd_l1_expression": {
+        "percentage": 5,
+        "classification": "Low",
+        "antibody": "22C3"
+      },
+      "her2_status": {
+        "ihc_score": "1+",
+        "fish_ratio": null,
+        "status": "Negative"
+      }
+    }
+  },
+  "pharmacogenomics": [
+    {
+      "gene": "CYP2D6",
+      "genotype": "*1/*4",
+      "phenotype": "Intermediate metabolizer",
+      "drugs_affected": ["Codeine", "Tamoxifen", "Metoprolol"],
+      "recommendations": "Dose adjustment may be required"
+    },
+    {
+      "gene": "TPMT",
+      "genotype": "*1/*1",
+      "phenotype": "Normal metabolizer",
+      "drugs_affected": ["6-mercaptopurine", "Azathioprine"],
+      "recommendations": "Standard dosing appropriate"
+    },
+    {
+      "gene": "UGT1A1",
+      "genotype": "*28/*28",
+      "phenotype": "Poor metabolizer",
+      "drugs_affected": ["Irinotecan"],
+      "recommendations": "Reduced starting dose recommended"
+    }
+  ]
+}
