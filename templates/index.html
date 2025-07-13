@@ -10,17 +10,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Previous CSS styles remain the same... -->
     <style>
-        /* All previous CSS styles from the original file... */
         :root {
-            /* Previous CSS variables... */
+            /* Primary palette */
             --primary: #2563eb;
             --primary-dark: #1e40af;
             --primary-light: #dbeafe;
+            
+            /* Secondary palette */
             --secondary: #10b981;
             --secondary-dark: #047857;
             --secondary-light: #d1fae5;
+            
+            /* Accent colors */
             --accent-blue: #3b82f6;
             --accent-indigo: #6366f1;
             --accent-purple: #8b5cf6;
@@ -31,6 +33,8 @@
             --accent-green: #22c55e;
             --accent-teal: #14b8a6;
             --accent-cyan: #06b6d4;
+            
+            /* Neutrals */
             --white: #ffffff;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
@@ -43,10 +47,14 @@
             --gray-800: #1f2937;
             --gray-900: #111827;
             --black: #000000;
+            
+            /* System feedback */
             --success: #22c55e;
             --warning: #f59e0b;
             --danger: #ef4444;
             --info: #3b82f6;
+            
+            /* UI properties */
             --border-radius-sm: 0.25rem;
             --border-radius: 0.5rem;
             --border-radius-md: 0.75rem;
@@ -54,18 +62,23 @@
             --border-radius-xl: 1.5rem;
             --border-radius-2xl: 2rem;
             --border-radius-full: 9999px;
+            
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
             --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-colors: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), fill 0.3s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-opacity: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-shadow: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-transform: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Spacing */
             --space-1: 0.25rem;
             --space-2: 0.5rem;
             --space-3: 0.75rem;
@@ -78,12 +91,14 @@
             --space-16: 4rem;
             --space-20: 5rem;
             --space-24: 6rem;
+            
+            /* Content area */
             --header-height: 70px;
             --sidebar-width: 280px;
             --container-max-width: 1200px;
         }
         
-        /* All previous global styling... */
+        /* Global styling */
         html, body {
             height: 100%;
             font-family: var(--font-sans);
@@ -100,11 +115,26 @@
             color: var(--gray-900);
         }
         
-        h1 { font-size: 2.25rem; font-weight: 700; }
-        h2 { font-size: 1.75rem; }
-        h3 { font-size: 1.5rem; }
-        h4 { font-size: 1.25rem; }
-        h5 { font-size: 1.125rem; }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        h4 {
+            font-size: 1.25rem;
+        }
+        
+        h5 {
+            font-size: 1.125rem;
+        }
         
         /* Layout components */
         .navbar {
@@ -208,7 +238,7 @@
             background-color: transparent;
         }
         
-               /* Form elements */
+        /* Form elements */
         .form-label {
             font-weight: 500;
             color: var(--gray-700);
@@ -469,6 +499,58 @@
             margin-right: var(--space-2);
         }
         
+        /* Category indicators */
+        .category-indicator {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            margin-bottom: var(--space-4);
+        }
+        
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--border-radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: var(--transition-all);
+        }
+        
+        .category-badge i {
+            margin-right: var(--space-2);
+        }
+        
+        .category-badge.clinical {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .category-badge.literature {
+            background-color: #e0e7ff;
+            color: #4338ca;
+        }
+        
+        .category-badge.symptom {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .category-badge.drug {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+        
+        .category-badge.diet {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .category-badge.report {
+            background-color: #f3e8ff;
+            color: #7c3aed;
+        }
+        
         /* Response container */
         .response-container {
             background-color: var(--white);
@@ -637,7 +719,267 @@
             box-shadow: var(--shadow-md);
         }
         
-        /* Booking and other existing styles... */
+        .file-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-3) var(--space-4);
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            margin-top: var(--space-3);
+        }
+        
+        .file-name {
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .remove-file {
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        /* Diet plan form */
+        .diet-form-container {
+            margin-bottom: var(--space-6);
+        }
+        
+        .diet-form-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: var(--space-5);
+            margin-bottom: var(--space-5);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .diet-form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+        
+        .diet-form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        /* Booking interface */
+        .booking-container {
+            margin-top: var(--space-6);
+            padding-top: var(--space-6);
+            border-top: 1px dashed var(--gray-300);
+        }
+        
+        .booking-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-5);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+        
+        .booking-steps {
+            display: flex;
+            margin-bottom: var(--space-6);
+            overflow: hidden;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+        }
+        
+        .booking-step {
+            padding: var(--space-3) var(--space-4);
+            font-weight: 500;
+            flex: 1;
+            text-align: center;
+            font-size: 0.9rem;
+            position: relative;
+            background-color: var(--gray-100);
+            color: var(--gray-600);
+            border-right: 1px solid var(--gray-200);
+            overflow: hidden;
+        }
+        
+        .booking-step:last-child {
+            border-right: none;
+        }
+        
+        .booking-step.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .booking-step.completed {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        .booking-step.completed::after {
+            content: '✓';
+            margin-left: var(--space-2);
+        }
+        
+        .booking-step-content {
+            display: none;
+        }
+        
+        .booking-step-content.active {
+            display: block;
+        }
+        
+        .doctor-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+        
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition-all);
+            border: 2px solid transparent;
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .doctor-card.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+        
+        .doctor-image-container {
+            position: relative;
+            padding-top: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+        }
+        
+        .doctor-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .doctor-info {
+            padding: var(--space-4);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .doctor-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: var(--space-2);
+            color: var(--gray-900);
+        }
+        
+        .doctor-specialty {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: var(--space-2);
+        }
+        
+        .doctor-experience {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-3);
+        }
+        
+        .doctor-bio {
+            font-size: 0.85rem;
+            color: var(--gray-700);
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: var(--space-3);
+            margin-bottom: var(--space-6);
+        }
+        
+        .time-slot {
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: var(--space-3) var(--space-4);
+            font-size: 0.9rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--transition-all);
+            text-align: center;
+        }
+        
+        .time-slot:hover {
+            background-color: var(--gray-200);
+        }
+        
+        .time-slot.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+        }
+        
+        .time-slot.booked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: var(--gray-300);
+            color: var(--gray-600);
+        }
+        
+        .booking-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-6);
+        }
+        
+        .confirmation-summary {
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: var(--space-5);
+            margin-bottom: var(--space-5);
+        }
+        
+        .confirmation-item {
+            margin-bottom: var(--space-3);
+            display: flex;
+        }
+        
+        .confirmation-label {
+            font-weight: 600;
+            width: 120px;
+            color: var(--gray-700);
+        }
+        
+        .confirmation-value {
+            flex: 1;
+            color: var(--gray-900);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: var(--space-4);
+            display: inline-block;
+        }
         
         /* Media queries */
         @media (max-width: 768px) {
@@ -654,8 +996,25 @@
                 padding: var(--space-4);
             }
             
-            .patient-info-group {
+            .diet-form-group, .patient-info-group {
                 min-width: 100%;
+            }
+            
+            .doctor-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-steps {
+                flex-direction: column;
+            }
+            
+            .booking-step {
+                border-right: none;
+                border-bottom: 1px solid var(--gray-200);
+            }
+            
+            .booking-step:last-child {
+                border-bottom: none;
             }
         }
         
@@ -679,6 +1038,92 @@
             .response-body {
                 padding: var(--space-4);
             }
+            
+            .time-slots {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Dark mode support */
+        .dark-mode {
+            --white: #1a1a1a;
+            --black: #ffffff;
+            --gray-50: #121212;
+            --gray-100: #1e1e1e;
+            --gray-200: #2d2d2d;
+            --gray-300: #404040;
+            --gray-400: #6b6b6b;
+            --gray-500: #909090;
+            --gray-600: #bdbdbd;
+            --gray-700: #d4d4d4;
+            --gray-800: #e8e8e8;
+            --gray-900: #f5f5f5;
+            
+            --primary-light: rgba(37, 99, 235, 0.2);
+            --secondary-light: rgba(16, 185, 129, 0.2);
+            
+            color-scheme: dark;
+        }
+        
+        .dark-mode .card,
+        .dark-mode .diet-form-section,
+        .dark-mode .patient-info-section,
+        .dark-mode .response-container {
+            background-color: var(--gray-100);
+            border-color: var(--gray-200);
+        }
+        
+        .dark-mode .card-header,
+        .dark-mode .response-header {
+            background-color: var(--gray-100);
+            border-color: var(--gray-200);
+        }
+        
+        .dark-mode .card-footer,
+        .dark-mode .response-footer {
+            background-color: var(--gray-50);
+            border-color: var(--gray-200);
+        }
+        
+        .dark-mode .form-control,
+        .dark-mode .form-select {
+            background-color: var(--gray-100);
+            border-color: var(--gray-300);
+            color: var(--gray-700);
+        }
+        
+        .dark-mode .image-upload-dropzone,
+        .dark-mode .report-upload-dropzone {
+            background-color: var(--gray-100);
+            border-color: var(--gray-300);
+        }
+        
+        .dark-mode .nav-tabs {
+            border-color: var(--gray-300);
+        }
+        
+        .dark-mode .doctor-card {
+            background-color: var(--gray-100);
+        }
+        
+        .dark-mode .doctor-card.selected {
+            background-color: var(--primary-light);
+        }
+        
+        .dark-mode .time-slot {
+            background-color: var(--gray-200);
+        }
+        
+        .dark-mode .time-slot.selected {
+            background-color: var(--primary-light);
+        }
+        
+        .dark-mode .confirmation-summary {
+            background-color: var(--gray-200);
+        }
+        
+        .dark-mode .file-item {
+            background-color: var(--gray-200);
         }
     </style>
 </head>
@@ -698,7 +1143,7 @@
         </div>
     </nav>
     
-     <!-- Main content -->
+    <!-- Main content -->
     <div class="page-container">
         <div class="container">
             <!-- System status alert -->
@@ -735,17 +1180,276 @@
             
             <!-- Tab content -->
             <div class="tab-content" id="main-tab-content">
-                <!-- Medical Query Panel (existing content) -->
+                <!-- Medical Query Panel -->
                 <div class="tab-pane fade show active" id="query-panel" role="tabpanel" aria-labelledby="query-tab">
-                    <!-- Previous query panel content remains the same... -->
+                    <div class="row g-4 mt-2">
+                        <div class="col-lg-5">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <i class="fas fa-search-plus me-2 text-primary"></i> Medical Query
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <label for="query-text" class="form-label">
+                                            <i class="fas fa-pen-fancy text-primary me-2"></i>Your Medical Question
+                                        </label>
+                                        <textarea id="query-text" class="form-control" rows="5" placeholder="Enter your medical question or describe your concern..."></textarea>
+                                        <div class="form-text mt-2">Our AI will automatically analyze your query and route it to the appropriate medical specialist agent.</div>
+                                    </div>
+                                    
+                                    <div class="category-indicator" id="detected-category">
+                                        <!-- Dynamically populated when a category is detected -->
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <button id="refresh-embeddings" class="btn btn-sm btn-outline-primary d-none">
+                                            <i class="fas fa-sync-alt me-2"></i> Refresh Knowledge
+                                        </button>
+                                        <button id="submit-query" class="btn btn-primary btn-icon w-100">
+                                            <i class="fas fa-paper-plane"></i>
+                                            <span>Submit Query</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-7">
+                            <div class="response-container h-100">
+                                <div class="response-header">
+                                    <h5 class="response-title">
+                                        <i class="fas fa-robot text-primary me-2"></i>
+                                        <span id="response-agent-title">AI Medical Assistant</span>
+                                    </h5>
+                                    <span class="badge bg-primary">AI Generated</span>
+                                </div>
+                                <div class="response-body">
+                                    <div id="query-response" class="response-content">
+                                        <div class="placeholder-text">
+                                            <i class="fas fa-comment-medical"></i>
+                                            <p>Ask any medical question to receive AI-generated insights.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Booking interface container (initially hidden) -->
+                                    <div id="booking-container" class="booking-container" style="display: none;">
+                                        <div class="booking-header">
+                                            <i class="fas fa-calendar-check me-2"></i>
+                                            Book an Appointment with a Specialist
+                                        </div>
+                                        
+                                        <!-- Steps indicator -->
+                                        <div class="booking-steps">
+                                            <div class="booking-step active" id="step-doctor">1. Select Doctor</div>
+                                            <div class="booking-step" id="step-time">2. Choose Time</div>
+                                            <div class="booking-step" id="step-information">3. Your Information</div>
+                                            <div class="booking-step" id="step-confirmation">4. Confirmation</div>
+                                        </div>
+                                        
+                                        <!-- Step 1: Doctor Selection -->
+                                        <div class="booking-step-content active" id="doctor-selection">
+                                            <p class="mb-4">Based on your symptoms, here are the recommended specialists:</p>
+                                            <div class="doctor-list" id="doctor-list">
+                                                <!-- Dynamically populated with doctors -->
+                                            </div>
+                                            <div class="booking-actions">
+                                                <div></div> <!-- Empty div for spacing -->
+                                                <button id="doctor-next" class="btn btn-primary" disabled>
+                                                    Continue <i class="fas fa-arrow-right ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Step 2: Time Slot Selection -->
+                                        <div class="booking-step-content" id="time-selection">
+                                            <p class="mb-4">Select an available appointment time:</p>
+                                            <div class="time-slots" id="time-slots">
+                                                <!-- Dynamically populated with time slots -->
+                                            </div>
+                                            <div class="booking-actions">
+                                                <button id="time-prev" class="btn btn-outline-primary">
+                                                    <i class="fas fa-arrow-left me-2"></i> Back
+                                                </button>
+                                                <button id="time-next" class="btn btn-primary" disabled>
+                                                    Continue <i class="fas fa-arrow-right ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Step 3: Contact Information -->
+                                        <div class="booking-step-content" id="information-collection">
+                                            <p class="mb-4">Please provide your contact information:</p>
+                                            <div class="mb-3">
+                                                <label for="patient-email" class="form-label">Email Address *</label>
+                                                <input type="email" id="patient-email" class="form-control" placeholder="your.email@example.com" required>
+                                                <div class="form-text">We'll send your appointment confirmation to this email.</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="patient-name" class="form-label">Your Name *</label>
+                                                <input type="text" id="patient-name" class="form-control" placeholder="Full Name" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="patient-phone" class="form-label">Phone Number</label>
+                                                <input type="tel" id="patient-phone" class="form-control" placeholder="(123) 456-7890">
+                                            </div>
+                                            <div class="mb-4">
+                                                <label for="patient-notes" class="form-label">Additional Notes (optional)</label>
+                                                <textarea id="patient-notes" class="form-control" rows="3" placeholder="Any additional information you'd like to share with the doctor"></textarea>
+                                            </div>
+                                            <div class="booking-actions">
+                                                <button id="info-prev" class="btn btn-outline-primary">
+                                                    <i class="fas fa-arrow-left me-2"></i> Back
+                                                </button>
+                                                <button id="info-next" class="btn btn-primary" disabled>
+                                                    Review & Confirm <i class="fas fa-arrow-right ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Step 4: Confirmation -->
+                                        <div class="booking-step-content" id="booking-confirmation">
+                                            <p class="mb-4">Please review your appointment details:</p>
+                                            <div class="confirmation-summary">
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Doctor:</div>
+                                                    <div class="confirmation-value" id="confirm-doctor">Dr. Example</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Specialty:</div>
+                                                    <div class="confirmation-value" id="confirm-specialty">Cardiology</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Date & Time:</div>
+                                                    <div class="confirmation-value" id="confirm-time">Monday, March 10 at 10:00 AM</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Your Email:</div>
+                                                    <div class="confirmation-value" id="confirm-email">example@email.com</div>
+                                                </div>
+                                            </div>
+                                            <div class="booking-actions">
+                                                <button id="confirm-prev" class="btn btn-outline-primary">
+                                                    <i class="fas fa-arrow-left me-2"></i> Back
+                                                </button>
+                                                <button id="confirm-booking" class="btn btn-success">
+                                                    Confirm Appointment <i class="fas fa-check ms-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Success Message (initially hidden) -->
+                                        <div class="booking-step-content" id="booking-success" style="text-align: center;">
+                                            <div class="success-icon">
+                                                <i class="fas fa-check-circle"></i>
+                                            </div>
+                                            <h4 class="mb-4">Your appointment has been confirmed!</h4>
+                                            <div class="confirmation-summary mb-4">
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Doctor:</div>
+                                                    <div class="confirmation-value" id="success-doctor">Dr. Example</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Date & Time:</div>
+                                                    <div class="confirmation-value" id="success-time">Monday, March 10 at 10:00 AM</div>
+                                                </div>
+                                                <div class="confirmation-item">
+                                                    <div class="confirmation-label">Meet Link:</div>
+                                                    <div class="confirmation-value">
+                                                        <a href="#" id="success-link" target="_blank">Teams Meeting Link</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-muted mb-4">A confirmation email has been sent to your email address with all the details.</p>
+                                            <button id="new-query" class="btn btn-primary">
+                                                <i class="fas fa-comment-medical me-2"></i> Ask Another Question
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="response-footer">
+                                    <div id="query-metadata">Ready to assist with your medical questions</div>
+                                    <div id="query-time"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Image Analysis Panel (existing content) -->
+                <!-- Image Analysis Panel -->
                 <div class="tab-pane fade" id="image-panel" role="tabpanel" aria-labelledby="image-tab">
-                    <!-- Previous image panel content remains the same... -->
+                    <div class="row g-4 mt-2">
+                        <div class="col-lg-5">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <i class="fas fa-camera-retro me-2 text-primary"></i> Medical Image Analysis
+                                </div>
+                                <div class="card-body">
+                                    <div class="image-upload-container">
+                                        <label for="image-upload" class="image-upload-dropzone" id="dropzone">
+                                            <div class="image-upload-icon">
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                            </div>
+                                            <h5>Upload Medical Image</h5>
+                                            <p class="text-muted">Drag and drop your image here or click to browse</p>
+                                            <p class="small text-muted">Supported formats: JPG, PNG, DICOM, TIFF, BMP</p>
+                                        </label>
+                                        <input type="file" id="image-upload" class="d-none" accept="image/*">
+                                        
+                                        <!-- Preview container -->
+                                        <div class="image-preview-container" id="image-preview-container">
+                                            <img id="image-preview" class="image-preview" alt="Preview">
+                                            <div class="file-info">
+                                                <div class="file-name" id="image-filename">No file selected</div>
+                                                <div class="remove-file" id="remove-image">
+                                                    <i class="fas fa-times-circle"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="image-prompt" class="form-label">
+                                            <i class="fas fa-file-medical-alt text-primary me-2"></i>Analysis Instructions
+                                        </label>
+                                        <textarea id="image-prompt" class="form-control" rows="3" placeholder="Please describe what you'd like to analyze in this image (e.g., 'Check this chest X-ray for signs of pneumonia')..."></textarea>
+                                        <div class="form-text mt-2">Provide specific context to guide the AI's analysis.</div>
+                                    </div>
+                                    
+                                    <button id="analyze-image" class="btn btn-primary btn-icon w-100">
+                                        <i class="fas fa-microscope"></i>
+                                        <span>Analyze Image</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-7">
+                            <div class="response-container h-100">
+                                <div class="response-header">
+                                    <h5 class="response-title">
+                                        <i class="fas fa-diagnoses text-primary me-2"></i>
+                                        Image Analysis Results
+                                    </h5>
+                                    <span class="badge bg-primary">AI Generated</span>
+                                </div>
+                                <div class="response-body">
+                                    <div id="image-response" class="response-content">
+                                        <div class="placeholder-text">
+                                            <i class="fas fa-x-ray"></i>
+                                            <p>Upload a medical image and provide analysis instructions to receive AI insights.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="response-footer">
+                                    <div id="image-metadata">Upload an image to begin</div>
+                                    <div id="image-time"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- NEW: Report Analysis Panel -->
+                <!-- Report Analysis Panel -->
                 <div class="tab-pane fade" id="report-panel" role="tabpanel" aria-labelledby="report-tab">
                     <div class="row g-4 mt-2">
                         <div class="col-lg-5">
@@ -878,11 +1582,7 @@
                                                 </div>
                                             </div>
                                             <div class="diet-form-row">
-                                                <div class="diet-form-group">
-                                                    <label for="diet-height" class="form-label">Height</label>
-                                                    <input type="number" id="diet-height" class="form-control" min="50" max="250" placeholder="cm">
-                                                </div>
-                                                <div class="diet-form-group">
+                                               <div class="diet-form-group">
                                                     <label for="diet-weight" class="form-label">Weight</label>
                                                     <input type="number" id="diet-weight" class="form-control" min="20" max="300" placeholder="kg">
                                                 </div>
@@ -1015,7 +1715,7 @@
         </div>
     </footer>
     
-     <!-- Bootstrap and core JS -->
+    <!-- Bootstrap and core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
@@ -1054,6 +1754,35 @@
             const patientAge = document.getElementById('patient-age');
             const patientGender = document.getElementById('patient-gender');
             const patientConditions = document.getElementById('patient-conditions');
+            
+            // Get booking elements
+            const doctorList = document.getElementById('doctor-list');
+            const timeSlots = document.getElementById('time-slots');
+            const patientEmail = document.getElementById('patient-email');
+            const patientName = document.getElementById('patient-name');
+            const patientPhone = document.getElementById('patient-phone');
+            const patientNotes = document.getElementById('patient-notes');
+            
+            // Confirmation elements
+            const confirmDoctor = document.getElementById('confirm-doctor');
+            const confirmSpecialty = document.getElementById('confirm-specialty');
+            const confirmTime = document.getElementById('confirm-time');
+            const confirmEmail = document.getElementById('confirm-email');
+            
+            // Success elements
+            const successDoctor = document.getElementById('success-doctor');
+            const successTime = document.getElementById('success-time');
+            const successLink = document.getElementById('success-link');
+            
+            // Step buttons
+            const doctorNextBtn = document.getElementById('doctor-next');
+            const timePrevBtn = document.getElementById('time-prev');
+            const timeNextBtn = document.getElementById('time-next');
+            const infoPrevBtn = document.getElementById('info-prev');
+            const infoNextBtn = document.getElementById('info-next');
+            const confirmPrevBtn = document.getElementById('confirm-prev');
+            const confirmBookingBtn = document.getElementById('confirm-booking');
+            const newQueryBtn = document.getElementById('new-query');
             
             // Agent icons and names mapping
             const agentIcons = {
@@ -1102,8 +1831,12 @@
                         if (data.initialized) {
                             systemInitialized = true;
                             systemStatusAlert.style.display = 'none';
+                            
+                            // Show refresh embeddings button once initialized
+                            document.getElementById('refresh-embeddings').classList.remove('d-none');
                         } else {
                             systemStatusAlert.style.display = 'block';
+                            // Check again in 5 seconds
                             setTimeout(checkSystemStatus, 5000);
                         }
                     })
@@ -1114,6 +1847,140 @@
                         systemStatusAlert.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Error connecting to the server. Please refresh the page.';
                     });
             }
+            
+            // Function to update the detected agent category UI
+            function updateDetectedCategory(agentType) {
+                if (!agentType) return;
+                
+                const icon = agentIcons[agentType] || 'fas fa-robot';
+                const name = agentNames[agentType] || 'AI Assistant';
+                
+                // Update UI
+                detectedCategory.innerHTML = `
+                    <div class="category-badge ${agentType}">
+                        <i class="${icon}"></i>
+                        <span>Query handled by: ${name}</span>
+                    </div>
+                `;
+                
+                lastDetectedAgent = agentType;
+            }
+            
+            // ===== QUERY HANDLING =====
+            const queryText = document.getElementById('query-text');
+            const submitQueryBtn = document.getElementById('submit-query');
+            const queryResponse = document.getElementById('query-response');
+            const queryMetadata = document.getElementById('query-metadata');
+            const queryTime = document.getElementById('query-time');
+            const responseAgentTitle = document.getElementById('response-agent-title');
+            
+            submitQueryBtn.addEventListener('click', function() {
+                if (!systemInitialized) {
+                    alert('System is still initializing. Please wait a moment and try again.');
+                    return;
+                }
+                
+                const query = queryText.value.trim();
+                if (!query) {
+                    queryResponse.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Please enter a medical query.
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Update UI to show loading state
+                submitQueryBtn.disabled = true;
+                submitQueryBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
+                
+                queryResponse.innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-spinner"></div>
+                        <div class="mt-3">Analyzing your query...</div>
+                        <div class="text-muted small mt-2">This may take a few moments</div>
+                    </div>
+                `;
+                
+                queryMetadata.textContent = 'Processing query...';
+                queryTime.textContent = '';
+                
+                // Clear previous category detection
+                detectedCategory.innerHTML = '';
+                bookingContainer.style.display = 'none';
+                
+                // Reset booking interface
+                resetBookingInterface();
+                
+                // Send query to server with no predefined type (automatic categorization)
+                fetch('/query', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: query
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Reset button state
+                    submitQueryBtn.disabled = false;
+                    submitQueryBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Submit Query</span>';
+                    
+                    if (data.status === 'success') {
+                        queryResponse.innerHTML = data.response;
+                        queryTime.textContent = data.processing_time || '';
+                        
+                        // Update UI with detected agent type
+                        const agentType = data.agent || 'router';
+                        updateDetectedCategory(agentType);
+                        
+                        // Update agent title
+                        responseAgentTitle.textContent = agentNames[agentType] || 'AI Medical Assistant';
+                        
+                        // Show booking interface if symptom agent was used
+                        if (agentType === 'symptom' || data.show_booking) {
+                            // If specialists data is included in the response, use it
+                            if (data.specialists && data.specialists.length > 0) {
+                                currentSpecialists = data.specialists;
+                                populateDoctors(data.specialists);
+                                bookingContainer.style.display = 'block';
+                            }
+                        }
+                        
+                        // Update metadata
+                        let metadataText = `Processed by ${agentNames[agentType] || agentType} agent`;
+                        if (data.direct_response) {
+                            metadataText += ' (general knowledge)';
+                        }
+                        queryMetadata.textContent = metadataText;
+                    } else {
+                        queryResponse.innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                ${data.response || 'An error occurred while processing your query.'}
+                            </div>
+                        `;
+                        queryMetadata.textContent = 'Error processing query';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting query:', error);
+                    queryResponse.innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-wifi-slash me-2"></i>
+                            Network error: Unable to connect to the server.
+                        </div>
+                    `;
+                    
+                    // Reset button state
+                    submitQueryBtn.disabled = false;
+                    submitQueryBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Submit Query</span>';
+                    queryMetadata.textContent = 'Connection error';
+                });
+            });
             
             // ===== REPORT ANALYSIS HANDLING =====
             
@@ -1340,535 +2207,7 @@
                         abnormalValuesList.appendChild(valueItem);
                     });
                 }
-            } 
-            // Function to update the detected agent category UI
-            function updateDetectedCategory(agentType) {
-                if (!agentType) return;
-                
-                const icon = agentIcons[agentType] || 'fas fa-robot';
-                const name = agentNames[agentType] || 'AI Assistant';
-                
-                // Update UI
-                detectedCategory.innerHTML = `
-                    <div class="category-badge ${agentType}">
-                        <i class="${icon}"></i>
-                        <span>Query handled by: ${name}</span>
-                    </div>
-                `;
-                
-                lastDetectedAgent = agentType;
             }
-            
-            // ===== QUERY HANDLING =====
-            const queryText = document.getElementById('query-text');
-            const submitQueryBtn = document.getElementById('submit-query');
-            const queryResponse = document.getElementById('query-response');
-            const queryMetadata = document.getElementById('query-metadata');
-            const queryTime = document.getElementById('query-time');
-            const responseAgentTitle = document.getElementById('response-agent-title');
-            
-            submitQueryBtn.addEventListener('click', function() {
-                if (!systemInitialized) {
-                    alert('System is still initializing. Please wait a moment and try again.');
-                    return;
-                }
-                
-                const query = queryText.value.trim();
-                if (!query) {
-                    queryResponse.innerHTML = `
-                        <div class="alert alert-warning">
-                            <i class="fas fa-exclamation-triangle me-2"></i>
-                            Please enter a medical query.
-                        </div>
-                    `;
-                    return;
-                }
-                
-                // Update UI to show loading state
-                submitQueryBtn.disabled = true;
-                submitQueryBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
-                
-                queryResponse.innerHTML = `
-                    <div class="loading-container">
-                        <div class="loading-spinner"></div>
-                        <div class="mt-3">Analyzing your query...</div>
-                        <div class="text-muted small mt-2">This may take a few moments</div>
-                    </div>
-                `;
-                
-                queryMetadata.textContent = 'Processing query...';
-                queryTime.textContent = '';
-                
-                // Clear previous category detection
-                detectedCategory.innerHTML = '';
-                bookingContainer.style.display = 'none';
-                
-                // Reset booking interface
-                resetBookingInterface();
-                
-                // Send query to server with no predefined type (automatic categorization)
-                fetch('/query', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        query: query
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Reset button state
-                    submitQueryBtn.disabled = false;
-                    submitQueryBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Submit Query</span>';
-                    
-                    if (data.status === 'success') {
-                        queryResponse.innerHTML = data.response;
-                        queryTime.textContent = data.processing_time || '';
-                        
-                        // Update UI with detected agent type
-                        const agentType = data.agent || 'router';
-                        updateDetectedCategory(agentType);
-                        
-                        // Update agent title
-                        responseAgentTitle.textContent = agentNames[agentType] || 'AI Medical Assistant';
-                        
-                        // Show booking interface if symptom agent was used
-                        if (agentType === 'symptom' || data.show_booking) {
-                            // If specialists data is included in the response, use it
-                            if (data.specialists && data.specialists.length > 0) {
-                                currentSpecialists = data.specialists;
-                                populateDoctors(data.specialists);
-                                bookingContainer.style.display = 'block';
-                            }
-                        }
-                        
-                        // Update metadata
-                        let metadataText = `Processed by ${agentNames[agentType] || agentType} agent`;
-                        if (data.direct_response) {
-                            metadataText += ' (general knowledge)';
-                        }
-                        queryMetadata.textContent = metadataText;
-                    } else {
-                        queryResponse.innerHTML = `
-                            <div class="alert alert-danger">
-                                <i class="fas fa-exclamation-circle me-2"></i>
-                                ${data.response || 'An error occurred while processing your query.'}
-                            </div>
-                        `;
-                        queryMetadata.textContent = 'Error processing query';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error submitting query:', error);
-                    queryResponse.innerHTML = `
-                        <div class="alert alert-danger">
-                            <i class="fas fa-wifi-slash me-2"></i>
-                            Network error: Unable to connect to the server.
-                        </div>
-                    `;
-                    
-                    // Reset button state
-                    submitQueryBtn.disabled = false;
-                    submitQueryBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Submit Query</span>';
-                    queryMetadata.textContent = 'Connection error';
-                });
-            });
-            
-            // Reset booking interface to initial state
-            function resetBookingInterface() {
-                // Reset selected values
-                selectedDoctor = null;
-                selectedTimeSlot = null;
-                
-                // Reset all form fields
-                patientEmail.value = '';
-                patientName.value = '';
-                patientPhone.value = '';
-                patientNotes.value = '';
-                
-                // Reset step buttons
-                doctorNextBtn.disabled = true;
-                timeNextBtn.disabled = true;
-                infoNextBtn.disabled = true;
-                
-                // Reset steps display
-                const steps = document.querySelectorAll('.booking-step');
-                steps.forEach(step => {
-                    step.classList.remove('active', 'completed');
-                });
-                document.getElementById('step-doctor').classList.add('active');
-                
-                // Reset step content visibility
-                const stepContents = document.querySelectorAll('.booking-step-content');
-                stepContents.forEach(content => {
-                    content.classList.remove('active');
-                });
-                document.getElementById('doctor-selection').classList.add('active');
-                
-                // Hide success view
-                document.getElementById('booking-success').classList.remove('active');
-            }
-            
-            // Populate doctors list
-            function populateDoctors(doctors) {
-                doctorList.innerHTML = '';
-                
-                doctors.forEach(doctor => {
-                    const doctorCard = document.createElement('div');
-                    doctorCard.className = 'doctor-card';
-                    doctorCard.dataset.doctorId = doctor.id;
-                    
-                    doctorCard.innerHTML = `
-                        <div class="doctor-image-container">
-                            <img src="${doctor.image_url}" alt="${doctor.name}" class="doctor-image">
-                        </div>
-                        <div class="doctor-info">
-                            <div class="doctor-name">${doctor.name}</div>
-                            <div class="doctor-specialty">${doctor.specialty}</div>
-                            <div class="doctor-experience">${doctor.experience} years experience</div>
-                            <div class="doctor-bio">${doctor.bio}</div>
-                        </div>
-                    `;
-                    
-                    doctorCard.addEventListener('click', function() {
-                        // Remove selection from all doctors
-                        document.querySelectorAll('.doctor-card').forEach(card => {
-                            card.classList.remove('selected');
-                        });
-                        
-                        // Add selection to this doctor
-                        this.classList.add('selected');
-                        
-                        // Store selected doctor
-                        selectedDoctor = doctor;
-                        
-                        // Enable next button
-                        doctorNextBtn.disabled = false;
-                    });
-                    
-                    doctorList.appendChild(doctorCard);
-                });
-            }
-            
-            // Populate time slots
-            function populateTimeSlots(slots) {
-                timeSlots.innerHTML = '';
-                
-                if (!slots || slots.length === 0) {
-                    timeSlots.innerHTML = '<p class="text-center">No available time slots found.</p>';
-                    return;
-                }
-                
-                const now = new Date();
-                const tomorrow = new Date(now);
-                tomorrow.setDate(tomorrow.getDate() + 1);
-                const dayLabels = {};
-                
-                // Group slots by day
-                const dayGroups = {};
-                
-                slots.forEach(slot => {
-                    const slotDate = new Date(slot.start_time);
-                    const dateString = slotDate.toDateString();
-                    
-                    if (!dayGroups[dateString]) {
-                        dayGroups[dateString] = [];
-                    }
-                    
-                    dayGroups[dateString].push(slot);
-                });
-                
-                // Create day sections
-                Object.keys(dayGroups).sort().forEach(dateString => {
-                    const dateHeader = document.createElement('div');
-                    dateHeader.className = 'w-100 mb-2 mt-3';
-                    dateHeader.innerHTML = `<h6>${dateString}</h6>`;
-                    timeSlots.appendChild(dateHeader);
-                    
-                    dayGroups[dateString].forEach(slot => {
-                        const timeSlotElem = document.createElement('div');
-                        timeSlotElem.className = 'time-slot';
-                        if (slot.is_booked) {
-                            timeSlotElem.classList.add('booked');
-                        }
-                        timeSlotElem.dataset.slotId = slot.formatted_time;
-                        
-                        const startTime = new Date(slot.start_time);
-                        const timeString = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                        
-                        timeSlotElem.textContent = timeString;
-                        
-                        if (!slot.is_booked) {
-                            timeSlotElem.addEventListener('click', function() {
-                                // Remove selection from all time slots
-                                document.querySelectorAll('.time-slot').forEach(s => {
-                                    s.classList.remove('selected');
-                                });
-                                
-                                // Add selection to this time slot
-                                this.classList.add('selected');
-                                
-                                // Store selected time slot
-                                selectedTimeSlot = slot;
-                                
-                                // Enable next button
-                                timeNextBtn.disabled = false;
-                            });
-                        }
-                        
-                        timeSlots.appendChild(timeSlotElem);
-                    });
-                });
-            }
-            
-            // Handle booking step navigation
-            doctorNextBtn.addEventListener('click', function() {
-                if (selectedDoctor) {
-                    // Update UI - mark step 1 as completed
-                    document.getElementById('step-doctor').classList.remove('active');
-                    document.getElementById('step-doctor').classList.add('completed');
-                    document.getElementById('step-time').classList.add('active');
-                    
-                    // Show time selection step
-                    document.getElementById('doctor-selection').classList.remove('active');
-                    document.getElementById('time-selection').classList.add('active');
-                    
-                    // Populate time slots
-                    populateTimeSlots(selectedDoctor.available_slots);
-                }
-            });
-            
-            timePrevBtn.addEventListener('click', function() {
-                // Go back to doctor selection
-                document.getElementById('step-time').classList.remove('active');
-                document.getElementById('step-doctor').classList.remove('completed');
-                document.getElementById('step-doctor').classList.add('active');
-                
-                document.getElementById('time-selection').classList.remove('active');
-                document.getElementById('doctor-selection').classList.add('active');
-            });
-            
-            timeNextBtn.addEventListener('click', function() {
-                if (selectedTimeSlot) {
-                    // Update UI - mark step 2 as completed
-                    document.getElementById('step-time').classList.remove('active');
-                    document.getElementById('step-time').classList.add('completed');
-                    document.getElementById('step-information').classList.add('active');
-                    
-                    // Show information collection step
-                    document.getElementById('time-selection').classList.remove('active');
-                    document.getElementById('information-collection').classList.add('active');
-                }
-            });
-            
-            infoPrevBtn.addEventListener('click', function() {
-                // Go back to time selection
-                document.getElementById('step-information').classList.remove('active');
-                document.getElementById('step-time').classList.remove('completed');
-                document.getElementById('step-time').classList.add('active');
-                
-                document.getElementById('information-collection').classList.remove('active');
-                document.getElementById('time-selection').classList.add('active');
-            });
-            
-            // Validate email and name fields on input
-            patientEmail.addEventListener('input', validateInfoForm);
-            patientName.addEventListener('input', validateInfoForm);
-            
-            function validateInfoForm() {
-                const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(patientEmail.value.trim());
-                const nameValid = patientName.value.trim().length > 0;
-                
-                infoNextBtn.disabled = !(emailValid && nameValid);
-            }
-            
-            infoNextBtn.addEventListener('click', function() {
-                // Validate form fields
-                if (patientEmail.value.trim() === '' || patientName.value.trim() === '') {
-                    alert('Please fill in all required fields.');
-                    return;
-                }
-                
-                // Update UI - mark step 3 as completed
-                document.getElementById('step-information').classList.remove('active');
-                document.getElementById('step-information').classList.add('completed');
-                document.getElementById('step-confirmation').classList.add('active');
-                
-                // Show confirmation step
-                document.getElementById('information-collection').classList.remove('active');
-                document.getElementById('booking-confirmation').classList.add('active');
-                
-                // Populate confirmation details
-                confirmDoctor.textContent = selectedDoctor.name;
-                confirmSpecialty.textContent = selectedDoctor.specialty;
-                confirmTime.textContent = selectedTimeSlot.formatted_time;
-                confirmEmail.textContent = patientEmail.value;
-            });
-            
-            confirmPrevBtn.addEventListener('click', function() {
-                // Go back to information collection
-                document.getElementById('step-confirmation').classList.remove('active');
-                document.getElementById('step-information').classList.remove('completed');
-                document.getElementById('step-information').classList.add('active');
-                
-                document.getElementById('booking-confirmation').classList.remove('active');
-                document.getElementById('information-collection').classList.add('active');
-            });
-            
-            confirmBookingBtn.addEventListener('click', function() {
-                // Disable button to prevent double booking
-                confirmBookingBtn.disabled = true;
-                confirmBookingBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Confirming...';
-                
-                // Prepare booking data
-                const bookingData = {
-                    doctor_id: selectedDoctor.id,
-                    doctor_name: selectedDoctor.name,
-                    slot_id: selectedTimeSlot.formatted_time,
-                    email: patientEmail.value,
-                    name: patientName.value,
-                    phone: patientPhone.value,
-                    notes: patientNotes.value,
-                    specialists: currentSpecialists
-                };
-                
-                // Send booking request
-                fetch('/book-appointment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(bookingData)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Reset button state
-                    confirmBookingBtn.disabled = false;
-                    confirmBookingBtn.innerHTML = 'Confirm Appointment <i class="fas fa-check ms-2"></i>';
-                    
-                    if (data.status === 'success') {
-                        // Show success message
-                        document.getElementById('booking-confirmation').classList.remove('active');
-                        document.getElementById('booking-success').classList.add('active');
-                        
-                        // Populate success details
-                        successDoctor.textContent = selectedDoctor.name;
-                        successTime.textContent = selectedTimeSlot.formatted_time;
-                        successLink.textContent = data.appointment.google_meet_link;
-                        successLink.href = data.appointment.google_meet_link;
-                        
-                        // Mark the slot as booked
-                        selectedTimeSlot.is_booked = true;
-                    } else {
-                        alert(`Booking failed: ${data.message}`);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error booking appointment:', error);
-                    confirmBookingBtn.disabled = false;
-                    confirmBookingBtn.innerHTML = 'Confirm Appointment <i class="fas fa-check ms-2"></i>';
-                    alert('An error occurred while booking your appointment. Please try again.');
-                });
-            });
-            
-            newQueryBtn.addEventListener('click', function() {
-                // Reset query and booking interface
-                queryText.value = '';
-                resetBookingInterface();
-                bookingContainer.style.display = 'none';
-                
-                queryResponse.innerHTML = `
-                    <div class="placeholder-text">
-                        <i class="fas fa-comment-medical"></i>
-                        <p>Ask any medical question to receive AI-generated insights.</p>
-                    </div>
-                `;
-                
-                queryMetadata.textContent = 'Ready to assist with your medical questions';
-                queryTime.textContent = '';
-                detectedCategory.innerHTML = '';
-            });
-            
-            // Refresh embeddings handler
-            const refreshEmbeddingsBtn = document.getElementById('refresh-embeddings');
-            
-            refreshEmbeddingsBtn.addEventListener('click', function() {
-                if (!systemInitialized) {
-                    alert('System is still initializing. Please wait a moment and try again.');
-                    return;
-                }
-                
-                // If no agent has been detected yet, default to clinical
-                const categoryToRefresh = lastDetectedAgent || 'clinical';
-                
-                if (!confirm(`Refresh knowledge base for ${categoryToRefresh} category? This may take a moment.`)) {
-                    return;
-                }
-                
-                // Update UI to show loading state
-                refreshEmbeddingsBtn.disabled = true;
-                const originalBtnText = refreshEmbeddingsBtn.innerHTML;
-                refreshEmbeddingsBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Refreshing...';
-                
-                queryResponse.innerHTML = `
-                    <div class="loading-container">
-                        <div class="loading-spinner"></div>
-                        <div class="mt-3">Refreshing knowledge base...</div>
-                        <div class="text-muted small mt-2">This process may take a minute or two</div>
-                    </div>
-                `;
-                
-                // Send refresh request to server
-                fetch('/refresh-embeddings', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        category: categoryToRefresh
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Reset button state
-                    refreshEmbeddingsBtn.disabled = false;
-                    refreshEmbeddingsBtn.innerHTML = originalBtnText;
-                    
-                    if (data.status === 'success') {
-                        queryResponse.innerHTML = `
-                            <div class="alert alert-success">
-                                <i class="fas fa-check-circle me-2"></i>
-                                ${data.message}
-                            </div>
-                            <div class="alert alert-info">
-                                <i class="fas fa-info-circle me-2"></i>
-                                Processed ${data.embedding_count || 'multiple'} records in ${data.processing_time || 'some time'}.
-                            </div>
-                        `;
-                    } else {
-                        queryResponse.innerHTML = `
-                            <div class="alert alert-danger">
-                                <i class="fas fa-exclamation-circle me-2"></i>
-                                ${data.message || 'An error occurred while refreshing the knowledge base.'}
-                            </div>
-                        `;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error refreshing embeddings:', error);
-                    queryResponse.innerHTML = `
-                        <div class="alert alert-danger">
-                            <i class="fas fa-wifi-slash me-2"></i>
-                            Network error: Unable to connect to the server.
-                        </div>
-                    `;
-                    
-                    // Reset button state
-                    refreshEmbeddingsBtn.disabled = false;
-                    refreshEmbeddingsBtn.innerHTML = originalBtnText;
-                });
-            });
             
             // ===== IMAGE HANDLING =====
             const imageUpload = document.getElementById('image-upload');
@@ -1893,11 +2232,6 @@
                 dropzone.addEventListener(eventName, preventDefaults, false);
             });
             
-            function preventDefaults(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            
             ['dragenter', 'dragover'].forEach(eventName => {
                 dropzone.addEventListener(eventName, highlight, false);
             });
@@ -1905,14 +2239,6 @@
             ['dragleave', 'drop'].forEach(eventName => {
                 dropzone.addEventListener(eventName, unhighlight, false);
             });
-            
-            function highlight() {
-                dropzone.classList.add('active');
-            }
-            
-            function unhighlight() {
-                dropzone.classList.remove('active');
-            }
             
             dropzone.addEventListener('drop', function(e) {
                 const dt = e.dataTransfer;
@@ -2162,6 +2488,432 @@
                 });
             });
             
+            // ===== BOOKING FUNCTIONALITY =====
+            
+            // Reset booking interface to initial state
+            function resetBookingInterface() {
+                // Reset selected values
+                selectedDoctor = null;
+                selectedTimeSlot = null;
+                
+                // Reset all form fields
+                if (patientEmail) patientEmail.value = '';
+                if (patientName) patientName.value = '';
+                if (patientPhone) patientPhone.value = '';
+                if (patientNotes) patientNotes.value = '';
+                
+                // Reset step buttons
+                if (doctorNextBtn) doctorNextBtn.disabled = true;
+                if (timeNextBtn) timeNextBtn.disabled = true;
+                if (infoNextBtn) infoNextBtn.disabled = true;
+                
+                // Reset steps display
+                const steps = document.querySelectorAll('.booking-step');
+                steps.forEach(step => {
+                    step.classList.remove('active', 'completed');
+                });
+                const stepDoctor = document.getElementById('step-doctor');
+                if (stepDoctor) stepDoctor.classList.add('active');
+                
+                // Reset step content visibility
+                const stepContents = document.querySelectorAll('.booking-step-content');
+                stepContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                const doctorSelection = document.getElementById('doctor-selection');
+                if (doctorSelection) doctorSelection.classList.add('active');
+                
+                // Hide success view
+                const bookingSuccess = document.getElementById('booking-success');
+                if (bookingSuccess) bookingSuccess.classList.remove('active');
+            }
+            
+            // Populate doctors list
+            function populateDoctors(doctors) {
+                if (!doctorList) return;
+                
+                doctorList.innerHTML = '';
+                
+                doctors.forEach(doctor => {
+                    const doctorCard = document.createElement('div');
+                    doctorCard.className = 'doctor-card';
+                    doctorCard.dataset.doctorId = doctor.id;
+                    
+                    doctorCard.innerHTML = `
+                        <div class="doctor-image-container">
+                            <img src="${doctor.image_url}" alt="${doctor.name}" class="doctor-image">
+                        </div>
+                        <div class="doctor-info">
+                            <div class="doctor-name">${doctor.name}</div>
+                            <div class="doctor-specialty">${doctor.specialty}</div>
+                            <div class="doctor-experience">${doctor.experience} years experience</div>
+                            <div class="doctor-bio">${doctor.bio}</div>
+                        </div>
+                    `;
+                    
+                    doctorCard.addEventListener('click', function() {
+                        // Remove selection from all doctors
+                        document.querySelectorAll('.doctor-card').forEach(card => {
+                            card.classList.remove('selected');
+                        });
+                        
+                        // Add selection to this doctor
+                        this.classList.add('selected');
+                        
+                        // Store selected doctor
+                        selectedDoctor = doctor;
+                        
+                        // Enable next button
+                        if (doctorNextBtn) doctorNextBtn.disabled = false;
+                    });
+                    
+                    doctorList.appendChild(doctorCard);
+                });
+            }
+            
+            // Populate time slots
+            function populateTimeSlots(slots) {
+                if (!timeSlots) return;
+                
+                timeSlots.innerHTML = '';
+                
+                if (!slots || slots.length === 0) {
+                    timeSlots.innerHTML = '<p class="text-center">No available time slots found.</p>';
+                    return;
+                }
+                
+                const now = new Date();
+                const tomorrow = new Date(now);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const dayLabels = {};
+                
+                // Group slots by day
+                const dayGroups = {};
+                
+                slots.forEach(slot => {
+                    const slotDate = new Date(slot.start_time);
+                    const dateString = slotDate.toDateString();
+                    
+                    if (!dayGroups[dateString]) {
+                        dayGroups[dateString] = [];
+                    }
+                    
+                    dayGroups[dateString].push(slot);
+                });
+                
+                // Create day sections
+                Object.keys(dayGroups).sort().forEach(dateString => {
+                    const dateHeader = document.createElement('div');
+                    dateHeader.className = 'w-100 mb-2 mt-3';
+                    dateHeader.innerHTML = `<h6>${dateString}</h6>`;
+                    timeSlots.appendChild(dateHeader);
+                    
+                    dayGroups[dateString].forEach(slot => {
+                        const timeSlotElem = document.createElement('div');
+                        timeSlotElem.className = 'time-slot';
+                        if (slot.is_booked) {
+                            timeSlotElem.classList.add('booked');
+                        }
+                        timeSlotElem.dataset.slotId = slot.formatted_time;
+                        
+                        const startTime = new Date(slot.start_time);
+                        const timeString = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        
+                        timeSlotElem.textContent = timeString;
+                        
+                        if (!slot.is_booked) {
+                            timeSlotElem.addEventListener('click', function() {
+                                // Remove selection from all time slots
+                                document.querySelectorAll('.time-slot').forEach(s => {
+                                    s.classList.remove('selected');
+                                });
+                                
+                                // Add selection to this time slot
+                                this.classList.add('selected');
+                                
+                                // Store selected time slot
+                                selectedTimeSlot = slot;
+                                
+                                // Enable next button
+                                if (timeNextBtn) timeNextBtn.disabled = false;
+                            });
+                        }
+                        
+                        timeSlots.appendChild(timeSlotElem);
+                    });
+                });
+            }
+            
+            // Handle booking step navigation
+            if (doctorNextBtn) {
+                doctorNextBtn.addEventListener('click', function() {
+                    if (selectedDoctor) {
+                        // Update UI - mark step 1 as completed
+                        document.getElementById('step-doctor').classList.remove('active');
+                        document.getElementById('step-doctor').classList.add('completed');
+                        document.getElementById('step-time').classList.add('active');
+                        
+                        // Show time selection step
+                        document.getElementById('doctor-selection').classList.remove('active');
+                        document.getElementById('time-selection').classList.add('active');
+                        
+                        // Populate time slots
+                        populateTimeSlots(selectedDoctor.available_slots);
+                    }
+                });
+            }
+            
+            if (timePrevBtn) {
+                timePrevBtn.addEventListener('click', function() {
+                    // Go back to doctor selection
+                    document.getElementById('step-time').classList.remove('active');
+                    document.getElementById('step-doctor').classList.remove('completed');
+                    document.getElementById('step-doctor').classList.add('active');
+                    
+                    document.getElementById('time-selection').classList.remove('active');
+                    document.getElementById('doctor-selection').classList.add('active');
+                });
+            }
+            
+            if (timeNextBtn) {
+                timeNextBtn.addEventListener('click', function() {
+                    if (selectedTimeSlot) {
+                        // Update UI - mark step 2 as completed
+                        document.getElementById('step-time').classList.remove('active');
+                        document.getElementById('step-time').classList.add('completed');
+                        document.getElementById('step-information').classList.add('active');
+                        
+                        // Show information collection step
+                        document.getElementById('time-selection').classList.remove('active');
+                        document.getElementById('information-collection').classList.add('active');
+                    }
+                });
+            }
+            
+            if (infoPrevBtn) {
+                infoPrevBtn.addEventListener('click', function() {
+                    // Go back to time selection
+                    document.getElementById('step-information').classList.remove('active');
+                    document.getElementById('step-time').classList.remove('completed');
+                    document.getElementById('step-time').classList.add('active');
+                    
+                    document.getElementById('information-collection').classList.remove('active');
+                    document.getElementById('time-selection').classList.add('active');
+                });
+            }
+            
+            // Validate email and name fields on input
+            if (patientEmail) patientEmail.addEventListener('input', validateInfoForm);
+            if (patientName) patientName.addEventListener('input', validateInfoForm);
+            
+            function validateInfoForm() {
+                if (!patientEmail || !patientName || !infoNextBtn) return;
+                
+                const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(patientEmail.value.trim());
+                const nameValid = patientName.value.trim().length > 0;
+                
+                infoNextBtn.disabled = !(emailValid && nameValid);
+            }
+            
+            if (infoNextBtn) {
+                infoNextBtn.addEventListener('click', function() {
+                    // Validate form fields
+                    if (patientEmail.value.trim() === '' || patientName.value.trim() === '') {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    
+                    // Update UI - mark step 3 as completed
+                    document.getElementById('step-information').classList.remove('active');
+                    document.getElementById('step-information').classList.add('completed');
+                    document.getElementById('step-confirmation').classList.add('active');
+                    
+                    // Show confirmation step
+                    document.getElementById('information-collection').classList.remove('active');
+                    document.getElementById('booking-confirmation').classList.add('active');
+                    
+                    // Populate confirmation details
+                    if (confirmDoctor) confirmDoctor.textContent = selectedDoctor.name;
+                    if (confirmSpecialty) confirmSpecialty.textContent = selectedDoctor.specialty;
+                    if (confirmTime) confirmTime.textContent = selectedTimeSlot.formatted_time;
+                    if (confirmEmail) confirmEmail.textContent = patientEmail.value;
+                });
+            }
+            
+            if (confirmPrevBtn) {
+                confirmPrevBtn.addEventListener('click', function() {
+                    // Go back to information collection
+                    document.getElementById('step-confirmation').classList.remove('active');
+                    document.getElementById('step-information').classList.remove('completed');
+                    document.getElementById('step-information').classList.add('active');
+                    
+                    document.getElementById('booking-confirmation').classList.remove('active');
+                    document.getElementById('information-collection').classList.add('active');
+                });
+            }
+            
+            if (confirmBookingBtn) {
+                confirmBookingBtn.addEventListener('click', function() {
+                    // Disable button to prevent double booking
+                    confirmBookingBtn.disabled = true;
+                    confirmBookingBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Confirming...';
+                    
+                    // Prepare booking data
+                    const bookingData = {
+                        doctor_id: selectedDoctor.id,
+                        doctor_name: selectedDoctor.name,
+                        slot_id: selectedTimeSlot.formatted_time,
+                        email: patientEmail.value,
+                        name: patientName.value,
+                        phone: patientPhone ? patientPhone.value : '',
+                        notes: patientNotes ? patientNotes.value : '',
+                        specialists: currentSpecialists
+                    };
+                    
+                    // Send booking request
+                    fetch('/book-appointment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(bookingData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Reset button state
+                        confirmBookingBtn.disabled = false;
+                        confirmBookingBtn.innerHTML = 'Confirm Appointment <i class="fas fa-check ms-2"></i>';
+                        
+                        if (data.status === 'success') {
+                            // Show success message
+                            document.getElementById('booking-confirmation').classList.remove('active');
+                            document.getElementById('booking-success').classList.add('active');
+                            
+                            // Populate success details
+                            if (successDoctor) successDoctor.textContent = selectedDoctor.name;
+                            if (successTime) successTime.textContent = selectedTimeSlot.formatted_time;
+                            if (successLink) {
+                                successLink.textContent = data.appointment.teams_meeting_link;
+                                successLink.href = data.appointment.teams_meeting_link;
+                            }
+                            
+                            // Mark the slot as booked
+                            selectedTimeSlot.is_booked = true;
+                        } else {
+                            alert(`Booking failed: ${data.message}`);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error booking appointment:', error);
+                        confirmBookingBtn.disabled = false;
+                        confirmBookingBtn.innerHTML = 'Confirm Appointment <i class="fas fa-check ms-2"></i>';
+                        alert('An error occurred while booking your appointment. Please try again.');
+                    });
+                });
+            }
+            
+            if (newQueryBtn) {
+                newQueryBtn.addEventListener('click', function() {
+                    // Reset query and booking interface
+                    queryText.value = '';
+                    resetBookingInterface();
+                    bookingContainer.style.display = 'none';
+                    
+                    queryResponse.innerHTML = `
+                        <div class="placeholder-text">
+                            <i class="fas fa-comment-medical"></i>
+                            <p>Ask any medical question to receive AI-generated insights.</p>
+                        </div>
+                    `;
+                    
+                    queryMetadata.textContent = 'Ready to assist with your medical questions';
+                    queryTime.textContent = '';
+                    detectedCategory.innerHTML = '';
+                });
+            }
+            
+            // Refresh embeddings handler
+            const refreshEmbeddingsBtn = document.getElementById('refresh-embeddings');
+            
+            if (refreshEmbeddingsBtn) {
+                refreshEmbeddingsBtn.addEventListener('click', function() {
+                    if (!systemInitialized) {
+                        alert('System is still initializing. Please wait a moment and try again.');
+                        return;
+                    }
+                    
+                    // If no agent has been detected yet, default to clinical
+                    const categoryToRefresh = lastDetectedAgent || 'clinical';
+                    
+                    if (!confirm(`Refresh knowledge base for ${categoryToRefresh} category? This may take a moment.`)) {
+                        return;
+                    }
+                    
+                    // Update UI to show loading state
+                    refreshEmbeddingsBtn.disabled = true;
+                    const originalBtnText = refreshEmbeddingsBtn.innerHTML;
+                    refreshEmbeddingsBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Refreshing...';
+                    
+                    queryResponse.innerHTML = `
+                        <div class="loading-container">
+                            <div class="loading-spinner"></div>
+                            <div class="mt-3">Refreshing knowledge base...</div>
+                            <div class="text-muted small mt-2">This process may take a minute or two</div>
+                        </div>
+                    `;
+                    
+                    // Send refresh request to server
+                    fetch('/refresh-embeddings', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            category: categoryToRefresh
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Reset button state
+                        refreshEmbeddingsBtn.disabled = false;
+                        refreshEmbeddingsBtn.innerHTML = originalBtnText;
+                        
+                        if (data.status === 'success') {
+                            queryResponse.innerHTML = `
+                                <div class="alert alert-success">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    ${data.message}
+                                </div>
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Processed ${data.embedding_count || 'multiple'} records in ${data.processing_time || 'some time'}.
+                                </div>
+                            `;
+                        } else {
+                            queryResponse.innerHTML = `
+                                <div class="alert alert-danger">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    ${data.message || 'An error occurred while refreshing the knowledge base.'}
+                                </div>
+                            `;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error refreshing embeddings:', error);
+                        queryResponse.innerHTML = `
+                            <div class="alert alert-danger">
+                                <i class="fas fa-wifi-slash me-2"></i>
+                                Network error: Unable to connect to the server.
+                            </div>
+                        `;
+                        
+                        // Reset button state
+                        refreshEmbeddingsBtn.disabled = false;
+                        refreshEmbeddingsBtn.innerHTML = originalBtnText;
+                    });
+                });
+            }
+            
             // Enable keyboard shortcut (Ctrl+Enter) to submit queries
             queryText.addEventListener('keydown', function(e) {
                 if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
@@ -2174,6 +2926,7 @@
                     analyzeImageBtn.click();
                 }
             });
+            
         });
     </script>
 </body>
